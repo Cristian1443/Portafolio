@@ -26,37 +26,43 @@
    * Mobile nav toggle
    */
   const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
-
-  function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
-    mobileNavToggleBtn.classList.toggle('bi-list');
-    mobileNavToggleBtn.classList.toggle('bi-x');
+  if (mobileNavToggleBtn) {
+    function mobileNavToogle() {
+      document.querySelector('body').classList.toggle('mobile-nav-active');
+      mobileNavToggleBtn.classList.toggle('bi-list');
+      mobileNavToggleBtn.classList.toggle('bi-x');
+    }
+    mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
   }
-  mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
 
   /**
    * Hide mobile nav on same-page/hash links
    */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
-    navmenu.addEventListener('click', () => {
-      if (document.querySelector('.mobile-nav-active')) {
-        mobileNavToogle();
-      }
+  const navmenuLinks = document.querySelectorAll('#navmenu a');
+  if (navmenuLinks.length > 0) {
+    navmenuLinks.forEach(navmenu => {
+      navmenu.addEventListener('click', () => {
+        if (document.querySelector('.mobile-nav-active')) {
+          if (typeof mobileNavToogle === 'function') mobileNavToogle();
+        }
+      });
     });
-
-  });
+  }
 
   /**
    * Toggle mobile nav dropdowns
    */
-  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.parentNode.classList.toggle('active');
-      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
-      e.stopImmediatePropagation();
+  const navmenuDropdowns = document.querySelectorAll('.navmenu .toggle-dropdown');
+  if (navmenuDropdowns.length > 0) {
+    navmenuDropdowns.forEach(navmenu => {
+      navmenu.addEventListener('click', function(e) {
+        e.preventDefault();
+        this.parentNode.classList.toggle('active');
+        this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
+        e.stopImmediatePropagation();
+      });
     });
-  });
+  }
 
   /**
    * Preloader
@@ -72,20 +78,20 @@
    * Scroll top button
    */
   let scrollTop = document.querySelector('.scroll-top');
-
   function toggleScrollTop() {
     if (scrollTop) {
       window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
   }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+  if (scrollTop) {
+    scrollTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
-  });
-
+  }
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
 
@@ -200,5 +206,56 @@
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
+
+  /**
+   * Portfolio isotope and filter
+   */
+  window.addEventListener('load', () => {
+    let portfolioContainer = document.querySelector('.portfolio-container');
+    let portfolioFilters = document.querySelectorAll('#portfolio-flters li');
+
+    if (portfolioContainer) {
+      let portfolioIsotope = new Isotope(portfolioContainer, {
+        itemSelector: '.portfolio-item',
+        layoutMode: 'fitRows'
+      });
+
+      portfolioFilters.forEach(filter => {
+        filter.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Remove active class from all filters
+          portfolioFilters.forEach(f => f.classList.remove('filter-active'));
+          
+          // Add active class to clicked filter
+          this.classList.add('filter-active');
+          
+          // Filter items
+          portfolioIsotope.arrange({
+            filter: this.getAttribute('data-filter')
+          });
+        });
+      });
+
+      // Add click event to portfolio items
+      document.querySelectorAll('.portfolio-wrap').forEach(wrap => {
+        wrap.addEventListener('click', function(e) {
+          // Prevent click if clicking on portfolio links
+          if (e.target.closest('.portfolio-links')) {
+            return;
+          }
+          
+          // Find the details link
+          const detailsLink = this.querySelector('.details-link');
+          if (detailsLink) {
+            window.location.href = detailsLink.getAttribute('href');
+          }
+        });
+      });
+
+      // Initial click on "Todos" filter
+      document.querySelector('#portfolio-flters li[data-filter="*"]').click();
+    }
+  });
 
 })();
