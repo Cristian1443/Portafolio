@@ -784,6 +784,49 @@ section,
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
+#hero {
+  width: 100%;
+  height: 100vh;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("../img/gallery/WhatsApp Image 2025-03-19 at 9.00.25 PM.jpeg") top center;
+  background-size: cover;
+  background-position: center -80px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-container {
+  text-align: center;
+  color: #fff;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  z-index: 2;
+  position: relative;
+}
+
+.hero-container h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.hero-container p {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.typed {
+  color: #00bfff;
+  font-weight: 600;
+}
+
 .hero {
   width: 100%;
   min-height: 100vh;
@@ -1824,4 +1867,181 @@ section,
   max-width: 400px;
   margin: 60px auto 0 auto;
   padding: 32px 0;
+}
+
+/* 1. Efecto Hover para las tarjetas de proyectos */
+.portfolio-wrap {
+  transition: transform 0.3s ease-in-out; /* Animación suave */
+}
+
+.portfolio-wrap:hover {
+  transform: translateY(-8px); /* Levanta la tarjeta al pasar el cursor */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Añade una sombra más pronunciada */
+}
+
+/* 2. Mejora de botones (ejemplo con tu botón de descarga de CV) */
+.about .content .btn-primary { /* Asegúrate que el selector sea el correcto */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.about .content .btn-primary:hover {
+  background-color: #20c997; /* Un color ligeramente más brillante */
+  transform: scale(1.05); /* Ligeramente más grande al pasar el cursor */
+}
+
+/* 3. Corregir texto justificado en la sección "Sobre Mí" */
+.about .content p {
+  text-align: left; /* Cambia 'justify' a 'left' para mejor legibilidad */
+}
+
+/* 4. Transición suave al cargar una página (opcional pero recomendado) */
+body {
+  animation: fadeInAnimation ease 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Refuerzo de estilos para portfolio-details */
+.portfolio-details {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 32px 0;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.portfolio-details .portfolio-details-slider img {
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+}
+
+.portfolio-details .portfolio-info {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.portfolio-details .portfolio-info h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.portfolio-details .portfolio-info ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.portfolio-details .portfolio-info ul li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.portfolio-details .portfolio-description {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.portfolio-details .portfolio-description h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.portfolio-details .portfolio-description p {
+  font-size: 1rem;
+  color: #444;
+}
+
+/* --- MEJORAS UI/UX PORTFOLIO DETAILS --- */
+.portfolio-details {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  padding: 40px 0;
+  margin-top: 48px;
+  margin-bottom: 48px;
+  transition: box-shadow 0.3s;
+}
+.portfolio-details:hover {
+  box-shadow: 0 16px 48px rgba(0,0,0,0.13);
+}
+
+.portfolio-details .portfolio-info,
+.portfolio-details .portfolio-description {
+  animation: fadeInUp 0.8s both;
+}
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+
+.portfolio-details .portfolio-info ul li {
+  margin-bottom: 14px;
+  font-size: 1.08rem;
+  display: flex;
+  align-items: center;
+}
+.portfolio-details .portfolio-info ul li strong {
+  min-width: 120px;
+  color: #20c997;
+  margin-right: 8px;
+}
+.portfolio-details .portfolio-info ul li:not(:last-child) {
+  border-bottom: 1px solid #ececec;
+  padding-bottom: 8px;
+}
+
+#portfolio-url {
+  display: inline-block;
+  background: #20c997;
+  color: #fff !important;
+  padding: 8px 20px;
+  border-radius: 24px;
+  font-weight: 600;
+  margin-top: 8px;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(32,201,151,0.08);
+}
+#portfolio-url:hover {
+  background: #17a589;
+  transform: scale(1.05);
+  color: #fff !important;
+  text-decoration: none;
+}
+
+.portfolio-details-slider .swiper-slide img {
+  border-radius: 14px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.portfolio-details-slider .swiper-slide img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+}
+
+.portfolio-details .portfolio-info h3,
+.portfolio-details .portfolio-description h2 {
+  font-family: 'Domine', serif;
+  letter-spacing: 0.5px;
+  color: #222;
+}
+.portfolio-details .portfolio-description p {
+  line-height: 1.7;
+  color: #444;
+  font-size: 1.08rem;
 }

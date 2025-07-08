@@ -31,35 +31,48 @@
       <div class="container">
 
         <div class="row gy-4">
-
+      
           <div class="col-lg-8">
             <div class="portfolio-details-slider swiper">
-              <div class="swiper-wrapper align-items-center" id="portfolio-slider-wrapper">
+              <div class="swiper-wrapper align-items-center">
+                <div class="swiper-slide">
+                    <img src="assets/img/portfolio/pokedex.png" alt="">
+                </div>
                 </div>
               <div class="swiper-pagination"></div>
             </div>
           </div>
-
+      
           <div class="col-lg-4">
             <div class="portfolio-info">
-              <h3 id="portfolio-title">Cargando...</h3>
+              <h3>Información del Proyecto</h3>
               <ul>
-                <li><strong>Categoría</strong>: <span id="portfolio-category"></span></li>
-                <li><strong>Cliente</strong>: <span id="portfolio-client"></span></li>
-                <li><strong>Fecha del proyecto</strong>: <span id="portfolio-date"></span></li>
-                <li><strong>URL del proyecto</strong>: <a href="#" id="portfolio-url" target="_blank">Visitar sitio</a></li>
-                <li><strong>Tecnologías</strong>: <span id="portfolio-tech"></span></li>
+                <li><strong>Categoría</strong>: Desarrollo Frontend</li>
+                <li><strong>Tecnologías</strong>: HTML, CSS, JavaScript, PokeAPI</li>
+                <li><strong>URL del Proyecto</strong>: <a href="#">www.ejemplo.com</a></li>
+                <li><strong>Repositorio</strong>: <a href="#">github.com/tu_usuario/pokedex</a></li>
               </ul>
             </div>
+            
             <div class="portfolio-description">
-              <h2>Descripción del Proyecto</h2>
-              <p id="portfolio-description-text"></p>
+              <h2>El Desafío</h2>
+              <p>
+                El objetivo era construir una Pokédex funcional consumiendo datos de la PokeAPI. El principal reto técnico era gestionar la gran cantidad de datos de manera eficiente para asegurar una carga rápida y una experiencia de usuario fluida sin sobrecargar el navegador.
+              </p>
+              
+              <h2>Decisiones y Soluciones</h2>
+              <p>
+                <strong>1. Gestión de Datos:</strong> Para solucionar la carga lenta, implementé un sistema de paginación que solicita solo 20 Pokémon a la vez. Esto redujo drásticamente el tiempo de carga inicial y mejoró el rendimiento general.
+              </p>
+              <p>
+                <strong>2. Diseño de Interfaz:</strong> Opté por un diseño de tarjetas (cards) para presentar la información clave de cada Pokémon de forma visual y escaneable. Cada tarjeta muestra la imagen, nombre y tipo, y al hacer clic, revela detalles adicionales, manteniendo la interfaz limpia y organizada.
+              </p>
             </div>
           </div>
-
+      
         </div>
-
-      </div>
+      
+      </div>  
     </section>
 
   </main>
