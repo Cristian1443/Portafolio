@@ -189,6 +189,16 @@ h6 {
   line-height: 0px;
 }
 
+.header-social-links .github i,
+.social-links .github i {
+  color: #fff;
+  transition: color 0.2s;
+}
+.header-social-links .github i:hover,
+.social-links .github i:hover {
+  color: #6e5494;
+}
+
 @media (max-width: 1200px) {
   .header .logo {
     order: 1;
