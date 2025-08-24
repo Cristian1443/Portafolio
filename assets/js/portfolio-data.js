@@ -198,26 +198,56 @@ const portfolioData = {
     video: "assets/video/jugueteria.mp4"
   },
 
-  // Proyecto 16: CCB
+  // Proyecto 16: CCB-Universidad
   16: {
-    title: "CCB - Aplicación",
-    category: "Aplicación Móvil",
-    technologies: ["React Native", "Node.js", "MongoDB", "Express", "Firebase"],
-    client: "CCB",
+    title: "Aplicación de Relacionamiento CCB-Uniempresarial",
+    category: "Aplicación Enterprise",
+    technologies: ["React Native", "Node.js", "MongoDB", "Express", "Firebase", "API Integration"],
+    client: "Cámara de Comercio de Bogotá & Uniempresarial",
     projectUrl: "#",
     repository: "#",
-    description: "Aplicación móvil para CCB que facilita la gestión de servicios y comunicación con clientes, optimizando procesos internos y mejorando la experiencia del usuario.",
-    challenge: "Desarrollar una aplicación que optimice los procesos internos de CCB y mejore la comunicación con los clientes.",
-    solution: "Creación de una aplicación móvil integral con funcionalidades de gestión, comunicación y seguimiento de servicios.",
+    description: "Aplicación estratégica que facilita el relacionamiento institucional entre Uniempresarial y la Cámara de Comercio de Bogotá, conectando estudiantes con oportunidades de emprendimiento, pasantías y vinculación empresarial.",
+    challenge: "Crear una plataforma digital que fortalezca la alianza estratégica entre la universidad y la CCB, facilitando programas de emprendimiento, bolsa de empleo y conexión empresa-academia.",
+    solution: "Desarrollo de una aplicación enterprise con módulos especializados para gestión de convenios, seguimiento de estudiantes, programas de emprendimiento y networking empresarial, incluyendo dashboards analíticos para ambas instituciones.",
     features: [
-      "Gestión de servicios",
-      "Comunicación con clientes",
-      "Seguimiento de procesos",
-      "Notificaciones push",
-      "Panel de administración"
+      "Gestión de convenios institucionales",
+      "Portal de oportunidades empresariales",
+      "Seguimiento de estudiantes en programas CCB",
+      "Módulo de emprendimiento e innovación",
+      "Sistema de networking empresa-academia",
+      "Dashboard analítico institucional",
+      "Notificaciones de eventos y oportunidades",
+      "Portal de bolsa de empleo especializada"
     ],
     images: ["assets/video/ccb.mp4"],
     video: "assets/video/ccb.mp4"
+  },
+
+  // Proyecto 17: Plataforma de Virtualización Universitaria
+  17: {
+    title: "Plataforma de Virtualización Uniempresarial",
+    category: "Infraestructura Cloud",
+    technologies: ["AWS", "Docker", "Kubernetes", "React", "Node.js", "MongoDB", "Redis", "CI/CD"],
+    client: "Uniempresarial - Área de Virtualización",
+    projectUrl: "#",
+    repository: "#",
+    description: "Liderazgo e implementación de la infraestructura de virtualización completa para Uniempresarial, gestionando plataformas educativas digitales que atienden a más de 10,000 estudiantes con alta disponibilidad y escalabilidad.",
+    challenge: "Diseñar e implementar una arquitectura cloud escalable que soporte el crecimiento de la universidad, garantizando disponibilidad 24/7, seguridad de datos académicos y optimización de costos operativos.",
+    solution: "Implementación de arquitectura microservicios en AWS con contenedorización Docker, orquestación Kubernetes, CI/CD automatizado y monitoreo en tiempo real. Reducción de costos operativos en 45% y mejora de disponibilidad a 99.9%.",
+    features: [
+      "Arquitectura cloud escalable en AWS",
+      "Contenedorización con Docker y Kubernetes",
+      "Sistema de autenticación SSO universitario",
+      "Plataformas LMS integradas",
+      "Backup automático y disaster recovery",
+      "Monitoreo en tiempo real con alertas",
+      "CI/CD automatizado para despliegues",
+      "Dashboard administrativo de recursos",
+      "Optimización de costos cloud",
+      "Seguridad multi-capa y cifrado de datos"
+    ],
+    images: ["assets/video/Campus.mp4"],
+    video: "assets/video/Campus.mp4"
   }
 };
 
