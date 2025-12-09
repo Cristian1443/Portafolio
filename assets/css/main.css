@@ -12,29 +12,41 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Domine",  sans-serif;
-  --nav-font: "Quicksand",  sans-serif;
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Domine", sans-serif;
+  --nav-font: "Quicksand", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #3b434a; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #0077ff; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #000000; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+:root {
+  --background-color: #ffffff;
+  /* Background color for the entire website, including individual sections */
+  --default-color: #444444;
+  /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #3b434a;
+  /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #0077ff;
+  /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #ffffff;
+  /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #000000;
+  /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #ffffff;  /* The default color of the main navmenu links */
-  --nav-hover-color: #0077ff; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #444444; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #0077ff; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-color: #ffffff;
+  /* The default color of the main navmenu links */
+  --nav-hover-color: #0077ff;
+  /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #ffffff;
+  /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #ffffff;
+  /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #444444;
+  /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #0077ff;
+  /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
@@ -194,6 +206,7 @@ h6 {
   color: #fff;
   transition: color 0.2s;
 }
+
 .header-social-links .github i:hover,
 .social-links .github i:hover {
   color: #6e5494;
@@ -223,6 +236,7 @@ h6 {
 .scrolled .header {
   --background-color: rgba(0, 0, 0, 0.8);
 }
+
 /*--------------------------------------------------------------
 # Professional Skills - Card Box Style
 --------------------------------------------------------------*/
@@ -233,7 +247,8 @@ h6 {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
   text-align: left;
   transition: all 0.3s ease-in-out;
-  height: 100%; /* Asegura que las tarjetas en la misma fila tengan la misma altura */
+  height: 100%;
+  /* Asegura que las tarjetas en la misma fila tengan la misma altura */
   border-bottom: 3px solid #fff;
   margin-bottom: 30px;
 }
@@ -254,7 +269,8 @@ h6 {
 }
 
 .skills .skill-card-pro p span {
-  background: #f0f0f0; /* Un gris neutral y limpio */
+  background: #f0f0f0;
+  /* Un gris neutral y limpio */
   color: #555;
   padding: 5px 12px;
   font-size: 14px;
@@ -266,8 +282,10 @@ h6 {
 .skills .skill-card-pro:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12);
-  border-bottom-color: #149ddd; /* Usa el color de acento de tu tema */
+  border-bottom-color: #149ddd;
+  /* Usa el color de acento de tu tema */
 }
+
 /* =======================================================
 Solución y Mejora Visual para Filtros del Portafolio
 ========================================================*/
@@ -280,27 +298,33 @@ Solución y Mejora Visual para Filtros del Portafolio
 
 .portfolio #portfolio-flters li {
   cursor: pointer;
-  display: inline-block; /* Propiedad clave para alinear en horizontal */
+  display: inline-block;
+  /* Propiedad clave para alinear en horizontal */
   padding: 10px 20px;
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
   text-transform: uppercase;
   color: #444444;
-  margin: 0 4px 8px 4px; /* Espaciado entre botones */
+  margin: 0 4px 8px 4px;
+  /* Espaciado entre botones */
   transition: all 0.3s ease-in-out;
-  background: #fff; /* Fondo de los botones */
+  background: #fff;
+  /* Fondo de los botones */
   border: 1px solid #e0e0e0;
-  border-radius: 50px; /* Hace los botones redondeados */
+  border-radius: 50px;
+  /* Hace los botones redondeados */
 }
 
 /* Estilo para el botón activo y al pasar el ratón */
 .portfolio #portfolio-flters li:hover,
 .portfolio #portfolio-flters li.filter-active {
-  background: #149ddd; /* Color de acento de tu tema */
+  background: #149ddd;
+  /* Color de acento de tu tema */
   color: #fff;
   border-color: #149ddd;
 }
+
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -822,14 +846,14 @@ section,
   font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .hero-container p {
   font-size: 1.5rem;
   font-weight: 400;
   margin-bottom: 2rem;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .typed {
@@ -1732,23 +1756,24 @@ section,
   border-radius: 30px;
   font-weight: 600;
   font-size: 1.1rem;
-  box-shadow: 0 4px 24px rgba(20,157,221,0.18), 0 1.5px 4px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 24px rgba(20, 157, 221, 0.18), 0 1.5px 4px rgba(0, 0, 0, 0.08);
   text-decoration: none;
   transition: background 0.2s, box-shadow 0.2s, color 0.2s, transform 0.2s;
   z-index: 1000;
   opacity: 0.97;
 }
+
 .btn-back-to-portfolio:hover {
   background: #0d182d;
   color: #fff;
-  box-shadow: 0 8px 32px rgba(20,157,221,0.22);
+  box-shadow: 0 8px 32px rgba(20, 157, 221, 0.22);
   transform: scale(1.04);
 }
 
 .portfolio-details {
   background: #fff;
   border-radius: 24px;
-  box-shadow: 0 8px 32px rgba(20, 157, 221, 0.08), 0 1.5px 4px rgba(0,0,0,0.04);
+  box-shadow: 0 8px 32px rgba(20, 157, 221, 0.08), 0 1.5px 4px rgba(0, 0, 0, 0.04);
   padding: 40px 32px 32px 32px;
   margin-top: 24px;
   margin-bottom: 32px;
@@ -1761,7 +1786,7 @@ section,
 .portfolio-details-slider {
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(20,157,221,0.10);
+  box-shadow: 0 2px 12px rgba(20, 157, 221, 0.10);
 }
 
 .portfolio-info {
@@ -1769,7 +1794,7 @@ section,
   border-radius: 16px;
   padding: 24px 20px 18px 20px;
   margin-bottom: 24px;
-  box-shadow: 0 1px 4px rgba(20,157,221,0.06);
+  box-shadow: 0 1px 4px rgba(20, 157, 221, 0.06);
 }
 
 .portfolio-info h3 {
@@ -1800,7 +1825,7 @@ section,
   background: #f7fafd;
   border-radius: 16px;
   padding: 24px 20px 18px 20px;
-  box-shadow: 0 1px 4px rgba(20,157,221,0.06);
+  box-shadow: 0 1px 4px rgba(20, 157, 221, 0.06);
 }
 
 .portfolio-description h2 {
@@ -1820,6 +1845,7 @@ section,
   .portfolio-details {
     padding: 24px 8px 16px 8px;
   }
+
   .btn-back-to-portfolio {
     top: 12px;
     left: 8px;
@@ -1830,13 +1856,15 @@ section,
 
 /* Animación suave para la entrada de la tarjeta */
 .portfolio-details {
-  animation: fadeInUp 0.7s cubic-bezier(.39,.575,.565,1) both;
+  animation: fadeInUp 0.7s cubic-bezier(.39, .575, .565, 1) both;
 }
+
 @keyframes fadeInUp {
   0% {
     opacity: 0;
     transform: translate3d(0, 40px, 0);
   }
+
   100% {
     opacity: 1;
     transform: none;
@@ -1848,6 +1876,7 @@ section,
   border-radius: 18px;
   transition: transform 0.3s;
 }
+
 .portfolio-details-slider .swiper-slide img:hover {
   transform: scale(1.03);
 }
@@ -1858,6 +1887,7 @@ section,
   opacity: 0.5;
   transition: opacity 0.2s;
 }
+
 .portfolio-details-slider .swiper-pagination-bullet-active {
   opacity: 1;
 }
@@ -1871,9 +1901,9 @@ section,
 
 /* Mejorar mensaje de carga */
 #loading-message {
-  background: rgba(255,255,255,0.95);
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 18px;
-  box-shadow: 0 2px 12px rgba(20,157,221,0.10);
+  box-shadow: 0 2px 12px rgba(20, 157, 221, 0.10);
   max-width: 400px;
   margin: 60px auto 0 auto;
   padding: 32px 0;
@@ -1881,27 +1911,34 @@ section,
 
 /* 1. Efecto Hover para las tarjetas de proyectos */
 .portfolio-wrap {
-  transition: transform 0.3s ease-in-out; /* Animación suave */
+  transition: transform 0.3s ease-in-out;
+  /* Animación suave */
 }
 
 .portfolio-wrap:hover {
-  transform: translateY(-8px); /* Levanta la tarjeta al pasar el cursor */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Añade una sombra más pronunciada */
+  transform: translateY(-8px);
+  /* Levanta la tarjeta al pasar el cursor */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  /* Añade una sombra más pronunciada */
 }
 
 /* 2. Mejora de botones (ejemplo con tu botón de descarga de CV) */
-.about .content .btn-primary { /* Asegúrate que el selector sea el correcto */
+.about .content .btn-primary {
+  /* Asegúrate que el selector sea el correcto */
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .about .content .btn-primary:hover {
-  background-color: #20c997; /* Un color ligeramente más brillante */
-  transform: scale(1.05); /* Ligeramente más grande al pasar el cursor */
+  background-color: #20c997;
+  /* Un color ligeramente más brillante */
+  transform: scale(1.05);
+  /* Ligeramente más grande al pasar el cursor */
 }
 
 /* 3. Corregir texto justificado en la sección "Sobre Mí" */
 .about .content p {
-  text-align: left; /* Cambia 'justify' a 'left' para mejor legibilidad */
+  text-align: left;
+  /* Cambia 'justify' a 'left' para mejor legibilidad */
 }
 
 /* 4. Transición suave al cargar una página (opcional pero recomendado) */
@@ -1915,6 +1952,7 @@ body {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -1924,7 +1962,7 @@ body {
 .portfolio-details {
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
   padding: 32px 0;
   margin-top: 40px;
   margin-bottom: 40px;
@@ -1932,7 +1970,7 @@ body {
 
 .portfolio-details .portfolio-details-slider img {
   border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.10);
 }
 
 .portfolio-details .portfolio-info {
@@ -1940,7 +1978,7 @@ body {
   border-radius: 12px;
   padding: 24px;
   margin-bottom: 24px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .portfolio-details .portfolio-info h3 {
@@ -1963,7 +2001,7 @@ body {
   background: #f8f9fa;
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .portfolio-details .portfolio-description h2 {
@@ -1981,23 +2019,32 @@ body {
 .portfolio-details {
   background: #fff;
   border-radius: 18px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
   padding: 40px 0;
   margin-top: 48px;
   margin-bottom: 48px;
   transition: box-shadow 0.3s;
 }
+
 .portfolio-details:hover {
-  box-shadow: 0 16px 48px rgba(0,0,0,0.13);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.13);
 }
 
 .portfolio-details .portfolio-info,
 .portfolio-details .portfolio-description {
   animation: fadeInUp 0.8s both;
 }
+
 @keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(40px);}
-  100% { opacity: 1; transform: translateY(0);}
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .portfolio-details .portfolio-info ul li {
@@ -2006,11 +2053,13 @@ body {
   display: flex;
   align-items: center;
 }
+
 .portfolio-details .portfolio-info ul li strong {
   min-width: 120px;
   color: #20c997;
   margin-right: 8px;
 }
+
 .portfolio-details .portfolio-info ul li:not(:last-child) {
   border-bottom: 1px solid #ececec;
   padding-bottom: 8px;
@@ -2025,8 +2074,9 @@ body {
   font-weight: 600;
   margin-top: 8px;
   transition: background 0.3s, transform 0.2s;
-  box-shadow: 0 2px 8px rgba(32,201,151,0.08);
+  box-shadow: 0 2px 8px rgba(32, 201, 151, 0.08);
 }
+
 #portfolio-url:hover {
   background: #17a589;
   transform: scale(1.05);
@@ -2036,12 +2086,13 @@ body {
 
 .portfolio-details-slider .swiper-slide img {
   border-radius: 14px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.10);
   transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .portfolio-details-slider .swiper-slide img:hover {
   transform: scale(1.03);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.13);
 }
 
 .portfolio-details .portfolio-info h3,
@@ -2050,6 +2101,7 @@ body {
   letter-spacing: 0.5px;
   color: #222;
 }
+
 .portfolio-details .portfolio-description p {
   line-height: 1.7;
   color: #444;
@@ -2060,29 +2112,34 @@ body {
 .uiux-card {
   background: #fff;
   border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
   padding: 32px 24px 24px 24px;
   margin-bottom: 24px;
   transition: box-shadow 0.3s;
   border: 1px solid #f0f0f0;
 }
+
 .uiux-card:hover {
-  box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.13);
 }
+
 .uiux-card-header {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 18px;
 }
+
 .uiux-card-header i {
   font-size: 2.2rem;
 }
+
 .uiux-badges {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
+
 .badge {
   display: flex;
   align-items: center;
@@ -2093,39 +2150,312 @@ body {
   background: #f5f5f5;
   color: #222;
   font-weight: 500;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
   cursor: pointer;
 }
+
 .badge:hover {
   background: #222;
   color: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
 }
-.badge-java { background: #f7df1e; color: #222; }
-.badge-js { background: #ffe873; color: #222; }
-.badge-ts { background: #3178c6; color: #fff; }
-.badge-python { background: #306998; color: #fff; }
-.badge-cpp { background: #00599c; color: #fff; }
-.badge-php { background: #8993be; color: #fff; }
-.badge-sql, .badge-mysql { background: #00758f; color: #fff; }
-.badge-react { background: #61dafb; color: #222; }
-.badge-angular { background: #dd0031; color: #fff; }
-.badge-astro { background: #ff5d01; color: #fff; }
-.badge-html { background: #e34c26; color: #fff; }
-.badge-css { background: #264de4; color: #fff; }
-.badge-bootstrap { background: #563d7c; color: #fff; }
-.badge-node { background: #3c873a; color: #fff; }
-.badge-express { background: #222; color: #fff; }
-.badge-spring { background: #6db33f; color: #fff; }
-.badge-laravel { background: #ff2d20; color: #fff; }
-.badge-mongo { background: #47a248; color: #fff; }
-.badge-pg { background: #336791; color: #fff; }
-.badge-aws { background: #ff9900; color: #222; }
-.badge-azure { background: #007fff; color: #fff; }
-.badge-git { background: #f34f29; color: #fff; }
-.badge-jira { background: #0052cc; color: #fff; }
-.badge-figma { background: #a259ff; color: #fff; }
-.badge-adobe { background: #ff61f6; color: #fff; }
-.badge-unity { background: #222; color: #fff; }
-.badge-design { background: #00b894; color: #fff; }
+
+.badge-java {
+  background: #f7df1e;
+  color: #222;
+}
+
+.badge-js {
+  background: #ffe873;
+  color: #222;
+}
+
+.badge-ts {
+  background: #3178c6;
+  color: #fff;
+}
+
+.badge-python {
+  background: #306998;
+  color: #fff;
+}
+
+.badge-cpp {
+  background: #00599c;
+  color: #fff;
+}
+
+.badge-php {
+  background: #8993be;
+  color: #fff;
+}
+
+.badge-sql,
+.badge-mysql {
+  background: #00758f;
+  color: #fff;
+}
+
+.badge-react {
+  background: #61dafb;
+  color: #222;
+}
+
+.badge-angular {
+  background: #dd0031;
+  color: #fff;
+}
+
+.badge-astro {
+  background: #ff5d01;
+  color: #fff;
+}
+
+.badge-html {
+  background: #e34c26;
+  color: #fff;
+}
+
+.badge-css {
+  background: #264de4;
+  color: #fff;
+}
+
+.badge-bootstrap {
+  background: #563d7c;
+  color: #fff;
+}
+
+.badge-node {
+  background: #3c873a;
+  color: #fff;
+}
+
+.badge-express {
+  background: #222;
+  color: #fff;
+}
+
+.badge-spring {
+  background: #6db33f;
+  color: #fff;
+}
+
+.badge-laravel {
+  background: #ff2d20;
+  color: #fff;
+}
+
+.badge-mongo {
+  background: #47a248;
+  color: #fff;
+}
+
+.badge-pg {
+  background: #336791;
+  color: #fff;
+}
+
+.badge-aws {
+  background: #ff9900;
+  color: #222;
+}
+
+.badge-azure {
+  background: #007fff;
+  color: #fff;
+}
+
+.badge-git {
+  background: #f34f29;
+  color: #fff;
+}
+
+.badge-jira {
+  background: #0052cc;
+  color: #fff;
+}
+
+.badge-figma {
+  background: #a259ff;
+  color: #fff;
+}
+
+.badge-adobe {
+  background: #ff61f6;
+  color: #fff;
+}
+
+.badge-unity {
+  background: #222;
+  color: #fff;
+}
+
+.badge-design {
+  background: #00b894;
+  color: #fff;
+}
+
+/*--------------------------------------------------------------
+# CV Download Button
+--------------------------------------------------------------*/
+.btn-download-cv {
+  display: inline-block;
+  padding: 14px 36px;
+  background: linear-gradient(135deg, #0077ff 0%, #0055cc 100%);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(0, 119, 255, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+}
+
+.btn-download-cv i {
+  margin-right: 8px;
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+.btn-download-cv:hover {
+  background: linear-gradient(135deg, #0055cc 0%, #003d99 100%);
+  box-shadow: 0 6px 20px rgba(0, 119, 255, 0.4);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.btn-download-cv:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(0, 119, 255, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .btn-download-cv {
+    padding: 12px 28px;
+    font-size: 15px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Stats Section
+--------------------------------------------------------------*/
+.stats .stats-item {
+  text-align: center;
+}
+
+.stats .stats-item span {
+  font-size: 48px;
+  display: block;
+  color: #0077ff;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.stats .stats-item p {
+  padding: 0;
+  margin: 0;
+  font-family: var(--heading-font);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+/*--------------------------------------------------------------
+# CTA Cards
+--------------------------------------------------------------*/
+.cta-card {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  height: 100%;
+  border-top: 3px solid transparent;
+}
+
+.cta-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 119, 255, 0.15);
+  border-top-color: #0077ff;
+}
+
+.cta-card .cta-icon {
+  font-size: 56px;
+  color: #0077ff;
+  margin-bottom: 20px;
+}
+
+.cta-card h4 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--heading-color);
+}
+
+.cta-card p {
+  color: #666;
+  margin-bottom: 25px;
+  font-size: 15px;
+}
+
+.btn-cta {
+  display: inline-block;
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 12px rgba(37, 211, 102, 0.3);
+}
+
+.btn-cta:hover {
+  background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 18px rgba(37, 211, 102, 0.4);
+  color: #ffffff;
+}
+
+.btn-cta i {
+  margin-right: 8px;
+}
+
+.btn-cta-secondary {
+  background: linear-gradient(135deg, #6e5494 0%, #4a3a6b 100%);
+  box-shadow: 0 3px 12px rgba(110, 84, 148, 0.3);
+}
+
+.btn-cta-secondary:hover {
+  background: linear-gradient(135deg, #4a3a6b 0%, #2d2447 100%);
+  box-shadow: 0 5px 18px rgba(110, 84, 148, 0.4);
+}
+
+.btn-cta-tertiary {
+  background: linear-gradient(135deg, #0077ff 0%, #0055cc 100%);
+  box-shadow: 0 3px 12px rgba(0, 119, 255, 0.3);
+}
+
+.btn-cta-tertiary:hover {
+  background: linear-gradient(135deg, #0055cc 0%, #003d99 100%);
+  box-shadow: 0 5px 18px rgba(0, 119, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+  .cta-card {
+    padding: 30px 20px;
+    margin-bottom: 20px;
+  }
+
+  .btn-cta {
+    padding: 10px 24px;
+    font-size: 14px;
+  }
+}
