@@ -1,0 +1,7 @@
+# Local-only source photo (11MB, unused by the site directly —
+# optimized derivatives cristian-*.jpg are tracked and used instead)
+assets/img/Cristian.png
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
