@@ -1,230 +1,125 @@
-// Funcionalidad específica para la página de detalles del portafolio
+/**
+ * Página de detalle: portfolio-details.html?id=N
+ * Construye el caso con los datos de portfolio-data.js (textContent, nunca innerHTML con datos).
+ */
+(function () {
+  "use strict";
 
-document.addEventListener('DOMContentLoaded', function() {
-  
-  // Inicializar AOS (Animate On Scroll)
-  if (typeof AOS !== 'undefined') {
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    });
+  const $ = function (id) { return document.getElementById(id); };
+
+  function el(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
   }
 
-  // Inicializar GLightbox para videos
-  if (typeof GLightbox !== 'undefined') {
-    GLightbox({
-      selector: '.portfolio-lightbox',
-      touchNavigation: true,
-      loop: true,
-      autoplayVideos: true
-    });
+  function showError() {
+    $("project-error").hidden = false;
   }
 
-  // Inicializar Swiper para el slider de detalles
-  if (typeof Swiper !== 'undefined') {
-    const portfolioDetailsSwiper = new Swiper('.portfolio-details-slider', {
-      loop: true,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
+  const id = parseInt(new URLSearchParams(window.location.search).get("id"), 10);
+  const project = getProjectData(id);
+
+  if (!project) {
+    document.title = "Proyecto no encontrado · Cristian Reyes";
+    showError();
+    return;
   }
 
-  // Manejar el botón de volver al portafolio
-  const backButton = document.querySelector('.btn-back-to-portfolio');
-  if (backButton) {
-    backButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      window.location.href = 'index.html#portfolio';
-    });
+  /* Cabecera */
+  document.title = project.title + " · Cristian Reyes";
+  const meta = document.querySelector('meta[name="description"]');
+  if (meta) meta.setAttribute("content", project.summary);
+
+  $("project-kicker").textContent = project.category + " · " + project.client;
+  $("project-title").textContent = project.title;
+  $("project-lead").textContent = project.summary;
+
+  const tech = $("project-tech");
+  project.technologies.forEach(function (t) { tech.appendChild(el("li", "", t)); });
+
+  /* Video (solo si el proyecto tiene) — sin autoplay: pesa varios MB */
+  if (project.video) {
+    const video = el("video");
+    video.controls = true;
+    video.muted = true;
+    video.playsInline = true;
+    video.preload = "metadata";
+    video.src = project.video + "#t=0.1";
+    video.setAttribute("aria-label", "Demostración de " + project.title);
+    $("project-video").appendChild(video);
+    $("project-video").hidden = false;
   }
 
-  // Función para mostrar mensaje de carga
-  function showLoading() {
-    const loadingMessage = document.getElementById('loading-message');
-    if (loadingMessage) {
-      loadingMessage.style.display = 'block';
-    }
-  }
+  /* Texto */
+  $("p-desc").textContent = project.description;
+  $("p-challenge").textContent = project.challenge;
+  $("p-solution").textContent = project.solution;
 
-  // Función para ocultar mensaje de carga
-  function hideLoading() {
-    const loadingMessage = document.getElementById('loading-message');
-    if (loadingMessage) {
-      loadingMessage.style.display = 'none';
-    }
-  }
-
-  // Manejar enlaces de proyectos y repositorios
-  document.addEventListener('click', function(e) {
-    if (e.target.matches('a[href="#"]')) {
-      e.preventDefault();
-      // Mostrar mensaje temporal
-      const originalText = e.target.textContent;
-      e.target.textContent = 'Enlace próximamente disponible';
-      e.target.style.opacity = '0.7';
-      
-      setTimeout(() => {
-        e.target.textContent = originalText;
-        e.target.style.opacity = '1';
-      }, 2000);
-    }
+  const features = $("p-features");
+  project.features.forEach(function (f) {
+    const li = el("li");
+    li.appendChild(el("i", "bi bi-check2-circle"));
+    li.lastChild.setAttribute("aria-hidden", "true");
+    li.appendChild(el("span", "", f));
+    features.appendChild(li);
   });
 
-  // Función para reproducir/pausar videos automáticamente
-  function handleVideoPlayback() {
-    const videos = document.querySelectorAll('video');
-    videos.forEach(video => {
-      // Pausar video cuando no está visible
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            video.play().catch(e => console.log('Error reproduciendo video:', e));
-          } else {
-            video.pause();
-          }
-        });
-      }, { threshold: 0.5 });
-      
-      observer.observe(video);
+  /* Ficha */
+  const facts = $("p-facts");
+
+  function fact(label, value) {
+    const row = el("div");
+    row.appendChild(el("dt", "", label));
+    const dd = el("dd");
+    if (typeof value === "string") dd.textContent = value;
+    else dd.appendChild(value);
+    row.appendChild(dd);
+    facts.appendChild(row);
+  }
+
+  function link(href, text) {
+    const a = el("a", "", text);
+    a.href = href;
+    a.target = "_blank";
+    a.rel = "noopener";
+    return a;
+  }
+
+  fact("Cliente u organización", project.client);
+  fact("Categoría", project.category);
+  if (project.role) fact("Mi rol", project.role);
+  if (project.period) fact("Periodo", project.period);
+  if (project.access) fact("Acceso", project.access);
+  if (project.projectUrl) fact("Proyecto", link(project.projectUrl, "Ver proyecto"));
+  if (project.repository) fact("Repositorio", link(project.repository, "Ver código"));
+
+  if (project.related && project.related.length) {
+    const wrap = el("span");
+    project.related.forEach(function (rid, i) {
+      const rel = getProjectData(rid);
+      if (!rel) return;
+      if (i) wrap.appendChild(document.createTextNode(" · "));
+      const a = el("a", "", rel.title);
+      a.href = "portfolio-details.html?id=" + rid;
+      wrap.appendChild(a);
     });
+    fact("Relacionado", wrap);
   }
 
-  // Inicializar manejo de videos
-  handleVideoPlayback();
+  /* Siguiente proyecto: primero los actuales, luego el archivo, en círculo */
+  const order = Object.keys(portfolioData).map(Number).sort(function (a, b) {
+    const ga = portfolioData[a].group === "actual" ? 0 : 1;
+    const gb = portfolioData[b].group === "actual" ? 0 : 1;
+    return ga - gb;
+  });
+  const next = getProjectData(order[(order.indexOf(id) + 1) % order.length]);
+  const nextId = order[(order.indexOf(id) + 1) % order.length];
+  const nextLink = $("next-project");
+  nextLink.href = "portfolio-details.html?id=" + nextId;
+  $("next-title").textContent = next.title;
 
-  // Función para copiar enlaces al portapapeles
-  function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(() => {
-      // Mostrar notificación de éxito
-      showNotification('Enlace copiado al portapapeles', 'success');
-    }).catch(err => {
-      console.error('Error copiando al portapapeles:', err);
-      showNotification('Error al copiar enlace', 'error');
-    });
-  }
-
-  // Función para mostrar notificaciones
-  function showNotification(message, type = 'info') {
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.textContent = message;
-    notification.style.cssText = `
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      padding: 15px 20px;
-      border-radius: 5px;
-      color: white;
-      font-weight: 500;
-      z-index: 9999;
-      animation: slideIn 0.3s ease-out;
-      background-color: ${type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : '#17a2b8'};
-    `;
-
-    document.body.appendChild(notification);
-
-    // Remover notificación después de 3 segundos
-    setTimeout(() => {
-      notification.style.animation = 'slideOut 0.3s ease-in';
-      setTimeout(() => {
-        if (notification.parentNode) {
-          notification.parentNode.removeChild(notification);
-        }
-      }, 300);
-    }, 3000);
-  }
-
-  // Agregar estilos CSS para las animaciones de notificaciones
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes slideIn {
-      from {
-        transform: translateX(100%);
-        opacity: 0;
-      }
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-    
-    @keyframes slideOut {
-      from {
-        transform: translateX(0);
-        opacity: 1;
-      }
-      to {
-        transform: translateX(100%);
-        opacity: 0;
-      }
-    }
-  `;
-  document.head.appendChild(style);
-
-  // Función para compartir proyecto en redes sociales
-  function shareProject(platform) {
-    const currentUrl = window.location.href;
-    const projectTitle = document.title;
-    
-    let shareUrl = '';
-    
-    switch(platform) {
-      case 'twitter':
-        shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent('Mira este proyecto: ' + projectTitle)}`;
-        break;
-      case 'linkedin':
-        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`;
-        break;
-      case 'facebook':
-        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
-        break;
-    }
-    
-    if (shareUrl) {
-      window.open(shareUrl, '_blank', 'width=600,height=400');
-    }
-  }
-
-  // Agregar botones de compartir si no existen
-  const portfolioInfo = document.querySelector('.portfolio-info');
-  if (portfolioInfo && !document.querySelector('.share-buttons')) {
-    const shareButtons = document.createElement('div');
-    shareButtons.className = 'share-buttons mt-4';
-    shareButtons.innerHTML = `
-      <h4>Compartir Proyecto</h4>
-      <div class="d-flex gap-2">
-        <button class="btn btn-outline-primary btn-sm" onclick="shareProject('twitter')">
-          <i class="bi bi-twitter"></i> Twitter
-        </button>
-        <button class="btn btn-outline-primary btn-sm" onclick="shareProject('linkedin')">
-          <i class="bi bi-linkedin"></i> LinkedIn
-        </button>
-        <button class="btn btn-outline-primary btn-sm" onclick="shareProject('facebook')">
-          <i class="bi bi-facebook"></i> Facebook
-        </button>
-      </div>
-    `;
-    portfolioInfo.appendChild(shareButtons);
-  }
-
-  // Hacer las funciones disponibles globalmente
-  window.shareProject = shareProject;
-  window.copyToClipboard = copyToClipboard;
-
-  // Ocultar mensaje de carga al finalizar
-  hideLoading();
-
-  console.log('Portfolio details page initialized successfully');
-}); 
+  $("project-hero").hidden = false;
+  $("project-detail").hidden = false;
+})();

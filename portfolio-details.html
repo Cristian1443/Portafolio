@@ -3,311 +3,157 @@
 
 <head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Detalles del Proyecto - Cristian Reyes</title>
-  <meta name="description" content="Detalles técnicos y análisis profundo de los proyectos de desarrollo de Cristian Reyes">
-  <meta name="keywords" content="desarrollo web, project manager, full stack, React, Node.js, cloud">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0e14">
+  <script>document.documentElement.classList.add('js');</script>
 
-  <!-- Favicons -->
+  <title>Proyecto · Cristian Reyes</title>
+  <meta name="description" content="Detalle de un proyecto de Cristian Reyes, desarrollador Full Stack y Mobile.">
+  <meta name="author" content="Cristian Reyes">
+
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Quicksand:wght@300;400;500;600;700&family=Domine:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Domine:wght@600;700&family=Quicksand:wght@500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="details-page">
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <h1 class="sitename">Cristian Reyes</h1>
-      </a>
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid header-inner">
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="index.html#hero">INICIO</a></li>
-          <li><a href="index.html#about">SOBRE MI</a></li>
-          <li><a href="index.html#resume">RESUMEN</a></li>
-          <li><a href="index.html#services">SERVICIOS</a></li>
-          <li><a href="index.html#portfolio" class="active">PORTAFOLIO</a></li>
-          <li><a href="index.html#blog">BLOG</a></li>
-          <li><a href="index.html#contact">CONTACTO</a></li>
+      <a href="index.html" class="logo" aria-label="Cristian Reyes, inicio"><span class="sitename">Cristian Reyes</span></a>
+
+      <nav id="navmenu" class="navmenu" aria-label="Principal">
+        <ul id="navlist">
+          <li><a href="index.html#hero">Inicio</a></li>
+          <li><a href="index.html#about">Sobre mí</a></li>
+          <li><a href="index.html#resume">Experiencia</a></li>
+          <li><a href="index.html#portfolio" class="active" aria-current="page">Proyectos</a></li>
+          <li><a href="index.html#skills">Habilidades</a></li>
+          <li><a href="index.html#services">Servicios</a></li>
+          <li><a href="index.html#blog">Blog</a></li>
+          <li><a href="index.html#contact">Contacto</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a href="index.html#contact" class="btn-nav-cta">Contactar</a>
+      <a href="index.html#contact" class="btn-nav-cta d-none d-xl-inline-flex">Contactar</a>
 
       <div class="header-social-links">
-        <a href="https://www.facebook.com/profile.php?id=61561933057327" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="https://www.instagram.com/cristian_cadc3143/" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/cristian-johan-reyes-gutierrez-751bb22b0/" class="linkedin"><i class="bi bi-linkedin"></i></a>
-        <a href="https://github.com/Cristian1443" class="github" target="_blank" rel="noopener"><i class="bi bi-github"></i></a>
+        <a href="https://www.linkedin.com/in/cristian-johan-reyes-gutierrez-751bb22b0/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/Cristian1443" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
       </div>
+
+      <button class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Abrir menú"><i class="bi bi-list" aria-hidden="true"></i></button>
 
     </div>
   </header>
 
   <main id="main">
 
-    <!-- Loading State -->
-    <div id="loading-message" class="loading-spinner">
-      <div>
-        <div class="spinner"></div>
-        <p class="mt-3 text-muted">Cargando detalles del proyecto...</p>
-      </div>
-    </div>
-
-    <!-- Project Header -->
-    <section class="project-header" id="project-header" style="display: none;">
+    <section class="project-hero dark-background" id="project-hero" hidden>
       <div class="container">
-        <a href="index.html#portfolio" class="btn-back-to-portfolio mb-4">
-          <i class="bx bx-arrow-back"></i> Volver al Portafolio
-        </a>
-        <div class="row mt-4">
-          <div class="col-lg-8">
-            <h1 class="project-title" id="project-title">Cargando...</h1>
-            <p class="project-subtitle" id="project-category">Cargando...</p>
-            <div class="tech-badges" id="tech-badges">
-              <!-- Tech badges will be loaded here -->
-            </div>
-          </div>
-        </div>
+        <a class="back-link" href="index.html#portfolio"><i class="bi bi-arrow-left" aria-hidden="true"></i> Volver a proyectos</a>
+        <p class="project-kicker-hero" id="project-kicker"></p>
+        <h1 id="project-title"></h1>
+        <p class="project-lead" id="project-lead"></p>
+        <ul class="chips" id="project-tech" aria-label="Tecnologías"></ul>
       </div>
     </section>
 
-    <!-- Portfolio Details -->
-    <section id="portfolio-details" class="portfolio-details" style="display: none;">
+    <section class="project-detail" id="project-detail" hidden>
       <div class="container">
-
         <div class="row gy-4">
 
-          <!-- Project Video/Images -->
           <div class="col-lg-8">
-            <div class="project-video">
-              <div id="project-media">
-                <!-- Video/images will be loaded here -->
-              </div>
+            <div class="project-video" id="project-video" hidden></div>
+
+            <div class="panel">
+              <h2>Descripción</h2>
+              <p id="p-desc"></p>
+              <h2>El desafío</h2>
+              <p id="p-challenge"></p>
+              <h2>La solución</h2>
+              <p id="p-solution"></p>
             </div>
 
-            <!-- Project Description -->
-            <div class="description-section">
-              <h2><i class="bi bi-file-text"></i> Descripción del Proyecto</h2>
-              <p id="project-description">Cargando descripción...</p>
-
-              <h2><i class="bi bi-exclamation-triangle"></i> El Desafío</h2>
-              <p id="project-challenge">Cargando desafío...</p>
-
-              <h2><i class="bi bi-lightbulb"></i> La Solución</h2>
-              <p id="project-solution">Cargando solución...</p>
+            <div class="panel">
+              <h2>Características principales</h2>
+              <ul class="feature-list" id="p-features"></ul>
             </div>
+
+            <a class="next-project" id="next-project" href="index.html#portfolio">
+              <span><small>Siguiente proyecto</small><strong id="next-title"></strong></span>
+              <i class="bi bi-arrow-right" aria-hidden="true"></i>
+            </a>
           </div>
 
-          <!-- Project Info Sidebar -->
           <div class="col-lg-4">
+            <aside class="panel" aria-label="Ficha del proyecto">
+              <h3>Ficha del proyecto</h3>
+              <dl class="fact-list" id="p-facts"></dl>
+            </aside>
 
-            <!-- Project Information -->
-            <div class="info-card">
-              <h3><i class="bi bi-info-circle"></i> Información del Proyecto</h3>
-              <ul class="info-list" id="project-info">
-                <!-- Project info will be loaded here -->
-              </ul>
+            <div class="panel">
+              <h3>¿Necesitas algo parecido?</h3>
+              <p style="margin-bottom:18px">Cuéntame qué proceso quieres ordenar o automatizar y vemos cómo abordarlo.</p>
+              <a href="index.html#contact" class="btn-primary-solid">Hablemos</a>
             </div>
-
-            <!-- Project Features -->
-            <div class="info-card">
-              <h3><i class="bi bi-gear"></i> Características Principales</h3>
-              <div class="features-grid" id="project-features">
-                <!-- Features will be loaded here -->
-              </div>
-            </div>
-
-            <!-- Call to Action -->
-            <div class="info-card">
-              <h3><i class="bi bi-chat-dots"></i> ¿Interesado en un Proyecto Similar?</h3>
-              <p>¿Te gustaría desarrollar una solución como esta para tu empresa? Contactemos para discutir tu próximo proyecto.</p>
-              <a href="index.html#contact" class="btn-download-cv w-100 justify-content-center">
-                <i class="bi bi-envelope"></i> Contactar Ahora
-              </a>
-            </div>
-
           </div>
 
         </div>
-
       </div>
     </section>
 
-    <!-- Error State -->
-    <section id="error-message" class="py-5" style="display: none;">
-      <div class="container text-center">
-        <div class="row justify-content-center">
-          <div class="col-lg-6">
-            <i class="bi bi-exclamation-triangle-fill text-warning" style="font-size: 4rem;"></i>
-            <h2 class="mt-3">Proyecto No Encontrado</h2>
-            <p class="text-muted">El proyecto que buscas no existe o ha sido movido.</p>
-            <a href="index.html#portfolio" class="btn-download-cv">
-              <i class="bx bx-arrow-back"></i> Volver al Portafolio
-            </a>
-          </div>
-        </div>
+    <section id="project-error" class="state-message dark-background" hidden>
+      <div class="container">
+        <h1 style="font-size:2rem">No encontré ese proyecto</h1>
+        <p style="margin:12px 0 24px">El enlace no corresponde a ningún proyecto del portafolio.</p>
+        <a href="index.html#portfolio" class="btn-primary-solid">Ver todos los proyectos</a>
       </div>
     </section>
 
   </main>
 
-  <footer id="footer" class="footer position-relative dark-background">
+  <footer id="footer" class="footer dark-background">
     <div class="container">
-      <h3 class="sitename">Cristian Reyes<br></h3>
-      <p>Transformando Ideas en Soluciones Tecnológicas</p>
-      <nav class="footer-links">
+      <h3>Cristian Reyes</h3>
+      <p class="footer-tagline">Plataformas internas, apps móviles e integraciones que el equipo usa de verdad.</p>
+      <nav class="footer-links" aria-label="Pie de página">
         <a href="index.html#hero">Inicio</a>
         <a href="index.html#about">Sobre mí</a>
-        <a href="index.html#portfolio">Portafolio</a>
+        <a href="index.html#portfolio">Proyectos</a>
         <a href="index.html#contact">Contacto</a>
       </nav>
-      <div class="social-links d-flex justify-content-center">
-        <a href="https://www.facebook.com/profile.php?id=61561933057327"><i class="bi bi-facebook"></i></a>
-        <a href="https://www.instagram.com/cristian_cadc3143/"><i class="bi bi-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/cristian-johan-reyes-gutierrez-751bb22b0/"><i class="bi bi-linkedin"></i></a>
-        <a href="https://github.com/Cristian1443" class="github" target="_blank" rel="noopener"><i class="bi bi-github"></i></a>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/cristian-johan-reyes-gutierrez-751bb22b0/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/Cristian1443" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/cristian_cadc3143/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61561933057327" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a>
       </div>
-      <div class="container">
-        <div class="copyright">
-          <span>Copyright</span> <strong class="px-1 sitename">Cristian</strong> <span>Todos los derechos resevados</span>
-        </div>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you've purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-          Diseñado por <a href="https://bootstrapmade.com/"> CristianR</a>
-        </div>
+      <div class="copyright">
+        <span>© 2026 Cristian Reyes. Todos los derechos reservados.</span>
+      </div>
+      <div class="credits">
+        Diseño y desarrollo: Cristian Reyes · Plantilla base: <a href="https://bootstrapmade.com/" target="_blank" rel="noopener">BootstrapMade</a>
       </div>
     </div>
   </footer>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top" aria-label="Volver arriba"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Main JS Files -->
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/site.js"></script>
   <script src="assets/js/portfolio-data.js"></script>
-
-  <script>
-    // Enhanced portfolio details loading
-    document.addEventListener('DOMContentLoaded', function () {
-      const urlParams = new URLSearchParams(window.location.search);
-      const projectId = urlParams.get('id');
-
-      if (!projectId) {
-        showError();
-        return;
-      }
-
-      const projectData = getProjectData(parseInt(projectId));
-
-      if (!projectData) {
-        showError();
-        return;
-      }
-
-      loadProjectDetails(projectData);
-    });
-
-    function loadProjectDetails(projectData) {
-      // Hide loading, show content
-      document.getElementById('loading-message').style.display = 'none';
-      document.getElementById('project-header').style.display = 'block';
-      document.getElementById('portfolio-details').style.display = 'block';
-
-      // Update page title
-      document.title = `${projectData.title} - Cristian Reyes Portfolio`;
-
-      // Update header
-      document.getElementById('project-title').textContent = projectData.title;
-      document.getElementById('project-category').textContent = projectData.category;
-
-      // Update tech badges
-      const techBadges = document.getElementById('tech-badges');
-      techBadges.innerHTML = projectData.technologies.map(tech =>
-        `<span class="tech-badge">${tech}</span>`
-      ).join('');
-
-      // Update project media
-      const projectMedia = document.getElementById('project-media');
-      if (projectData.video) {
-        projectMedia.innerHTML = `
-          <video controls autoplay muted loop style="width:100%;height:auto;border-radius:12px;">
-            <source src="${projectData.video}" type="video/mp4">
-            Tu navegador no soporta el elemento video.
-          </video>
-        `;
-      }
-
-      // Update descriptions
-      document.getElementById('project-description').textContent = projectData.description;
-      document.getElementById('project-challenge').textContent = projectData.challenge;
-      document.getElementById('project-solution').textContent = projectData.solution;
-
-      // Update project info
-      const projectInfo = document.getElementById('project-info');
-      projectInfo.innerHTML = `
-        <li><i class="bi bi-tag"></i> <strong>Categoría:</strong> ${projectData.category}</li>
-        <li><i class="bi bi-code-slash"></i> <strong>Tecnologías:</strong> ${projectData.technologies.join(', ')}</li>
-        <li><i class="bi bi-building"></i> <strong>Cliente:</strong> ${projectData.client}</li>
-        <li><i class="bi bi-link-45deg"></i> <strong>Proyecto:</strong> <a href="${projectData.projectUrl}" target="_blank">Ver proyecto</a></li>
-        <li><i class="bi bi-github"></i> <strong>Repositorio:</strong> <a href="${projectData.repository}" target="_blank">Ver código</a></li>
-      `;
-
-      // Update features
-      const projectFeatures = document.getElementById('project-features');
-      projectFeatures.innerHTML = projectData.features.map(feature => `
-        <div class="feature-item">
-          <i class="bi bi-check-circle"></i>
-          <div>${feature}</div>
-        </div>
-      `).join('');
-
-      // Initialize AOS
-      if (typeof AOS !== 'undefined') {
-        AOS.init();
-      }
-    }
-
-    function showError() {
-      document.getElementById('loading-message').style.display = 'none';
-      document.getElementById('error-message').style.display = 'block';
-    }
-  </script>
+  <script src="assets/js/portfolio-details.js"></script>
 
 </body>
+
 </html>
