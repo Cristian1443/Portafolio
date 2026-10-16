@@ -4,152 +4,91 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0b0e14">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="color-scheme" content="dark">
   <script>document.documentElement.classList.add('js');</script>
 
   <title>Proyecto · Cristian Reyes</title>
-  <meta name="description" content="Detalle de un proyecto de Cristian Reyes, desarrollador Full Stack y Mobile.">
+  <meta name="description" content="Detalle de un proyecto de Cristian Reyes, desarrollador full stack y móvil.">
   <meta name="author" content="Cristian Reyes">
 
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Domine:wght@600;700&family=Quicksand:wght@500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@100,300&display=swap" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
 </head>
 
 <body class="details-page">
 
   <a class="skip-link" href="#main">Saltar al contenido</a>
-  <div class="scroll-progress" aria-hidden="true"></div>
 
-  <header id="header" class="header fixed-top">
-    <div class="container-fluid header-inner">
-
-      <a href="index.html" class="logo" aria-label="Cristian Reyes, inicio"><span class="sitename">Cristian Reyes</span></a>
-
-      <nav id="navmenu" class="navmenu" aria-label="Principal">
-        <ul id="navlist">
-          <li><a href="index.html#hero">Inicio</a></li>
-          <li><a href="index.html#about">Sobre mí</a></li>
-          <li><a href="index.html#resume">Experiencia</a></li>
-          <li><a href="index.html#portfolio" class="active" aria-current="page">Proyectos</a></li>
-          <li><a href="index.html#skills">Habilidades</a></li>
-          <li><a href="index.html#services">Servicios</a></li>
-          <li><a href="index.html#blog">Blog</a></li>
-          <li><a href="index.html#contact">Contacto</a></li>
-        </ul>
-      </nav>
-
-      <a href="index.html#contact" class="btn-nav-cta d-none d-xl-inline-flex">Contactar</a>
-
-      <div class="header-social-links">
-        <a href="https://www.linkedin.com/in/cristian-johan-reyes-gutierrez-751bb22b0/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
-        <a href="https://github.com/Cristian1443" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
-      </div>
-
-      <button class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Abrir menú"><i class="bi bi-list" aria-hidden="true"></i></button>
-
-    </div>
+  <header class="bar">
+    <a class="bar-name" href="index.html" aria-label="Cristian Reyes, inicio">Cristian Reyes</a>
+    <nav class="bar-nav" aria-label="Principal">
+      <a href="index.html#proyectos">Proyectos</a>
+      <a href="index.html#experiencia">Experiencia</a>
+      <a class="hide-sm" href="index.html#escritos">Escritos</a>
+      <a class="btn" href="index.html#contacto">Escríbeme</a>
+    </nav>
   </header>
 
   <main id="main">
 
-    <section class="project-hero dark-background" id="project-hero" hidden>
-      <div class="container">
-        <a class="back-link" href="index.html#portfolio"><i class="bi bi-arrow-left" aria-hidden="true"></i> Volver a proyectos</a>
-        <p class="project-kicker-hero" id="project-kicker"></p>
-        <h1 id="project-title"></h1>
-        <p class="project-lead" id="project-lead"></p>
-        <ul class="chips" id="project-tech" aria-label="Tecnologías"></ul>
+    <section id="project" hidden>
+      <div class="detail-head">
+        <h1 class="display" id="project-title"></h1>
+        <p class="detail-lead" id="project-lead"></p>
       </div>
-    </section>
 
-    <section class="project-detail" id="project-detail" hidden>
-      <div class="container">
-        <div class="row gy-4">
-
-          <div class="col-lg-8">
-            <div class="project-video" id="project-video" hidden></div>
-
-            <div class="panel">
-              <h2>Descripción</h2>
-              <p id="p-desc"></p>
-              <h2>El desafío</h2>
-              <p id="p-challenge"></p>
-              <h2>La solución</h2>
-              <p id="p-solution"></p>
-            </div>
-
-            <div class="panel">
-              <h2>Características principales</h2>
-              <ul class="feature-list" id="p-features"></ul>
-            </div>
-
-            <a class="next-project" id="next-project" href="index.html#portfolio">
-              <span><small>Siguiente proyecto</small><strong id="next-title"></strong></span>
-              <i class="bi bi-arrow-right" aria-hidden="true"></i>
-            </a>
+      <div class="block wrap">
+        <div class="g12">
+          <div class="detail-main" data-reveal-group>
+            <div class="detail-media" id="project-video" hidden></div>
+            <h2>Descripción</h2>
+            <p id="p-desc"></p>
+            <h2>El desafío</h2>
+            <p id="p-challenge"></p>
+            <h2>La solución</h2>
+            <p id="p-solution"></p>
+            <h2>Qué incluye</h2>
+            <ul class="feature-list" id="p-features"></ul>
           </div>
 
-          <div class="col-lg-4">
-            <aside class="panel" aria-label="Ficha del proyecto">
-              <h3>Ficha del proyecto</h3>
-              <dl class="fact-list" id="p-facts"></dl>
-            </aside>
-
-            <div class="panel">
-              <h3>¿Necesitas algo parecido?</h3>
-              <p style="margin-bottom:18px">Cuéntame qué proceso quieres ordenar o automatizar y vemos cómo abordarlo.</p>
-              <a href="index.html#contact" class="btn-primary-solid">Hablemos</a>
-            </div>
-          </div>
-
+          <aside class="detail-side" aria-label="Ficha del proyecto" data-reveal-group>
+            <h2>Ficha</h2>
+            <dl class="facts" id="p-facts"></dl>
+          </aside>
         </div>
+
+        <a class="next" id="next-project" href="index.html#proyectos" data-reveal>
+          <strong><span class="lead-in">Siguiente: </span><span id="next-title"></span></strong>
+        </a>
       </div>
     </section>
 
-    <section id="project-error" class="state-message dark-background" hidden>
-      <div class="container">
-        <h1 style="font-size:2rem">No encontré ese proyecto</h1>
-        <p style="margin:12px 0 24px">El enlace no corresponde a ningún proyecto del portafolio.</p>
-        <a href="index.html#portfolio" class="btn-primary-solid">Ver todos los proyectos</a>
-      </div>
+    <section id="project-error" class="state" hidden>
+      <h1 class="display" style="font-size:var(--step-head)">No encontré ese proyecto</h1>
+      <p style="margin:16px 0 28px">El enlace no corresponde a ningún proyecto del portafolio.</p>
+      <a class="btn" href="index.html#proyectos">Ver los proyectos</a>
     </section>
 
   </main>
 
-  <footer id="footer" class="footer dark-background">
-    <div class="container">
-      <h3>Cristian Reyes</h3>
-      <p class="footer-tagline">Plataformas internas, apps móviles e integraciones que el equipo usa de verdad.</p>
-      <nav class="footer-links" aria-label="Pie de página">
-        <a href="index.html#hero">Inicio</a>
-        <a href="index.html#about">Sobre mí</a>
-        <a href="index.html#portfolio">Proyectos</a>
-        <a href="index.html#contact">Contacto</a>
-      </nav>
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/cristian-johan-reyes-gutierrez-751bb22b0/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
-        <a href="https://github.com/Cristian1443" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
-        <a href="https://www.instagram.com/cristian_cadc3143/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
-        <a href="https://www.facebook.com/profile.php?id=61561933057327" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a>
-      </div>
-      <div class="copyright">
-        <span>© 2026 Cristian Reyes. Todos los derechos reservados.</span>
-      </div>
-      <div class="credits">
-        Diseño y desarrollo: Cristian Reyes · Plantilla base: <a href="https://bootstrapmade.com/" target="_blank" rel="noopener">BootstrapMade</a>
-      </div>
-    </div>
+  <footer class="foot">
+    <span>Cristian Reyes · desarrollador</span>
+    <nav aria-label="Pie de página">
+      <a href="https://github.com/Cristian1443" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/cristian-johan-reyes-gutierrez-751bb22b0/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://linktr.ee/Cristian_Reyes" target="_blank" rel="noopener">Linktree</a>
+    </nav>
+    <span class="right">2026 · Bogotá</span>
   </footer>
-
-  <a href="#" id="scroll-top" class="scroll-top" aria-label="Volver arriba"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="assets/js/site.js"></script>
   <script src="assets/js/portfolio-data.js"></script>

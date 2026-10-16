@@ -5,3 +5,6 @@ assets/img/Cristian.png
 # OS/editor junk
 .DS_Store
 Thumbs.db
+
+# tasteskill working files
+.taste-skill/

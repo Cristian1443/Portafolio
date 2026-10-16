@@ -16,6 +16,7 @@ const portfolioData = {
   // frontend + backend + integraciones). Confirmar alcance real antes de publicar.
   18: {
     group: "actual",
+    year: "2026",
     kind: "plataforma",
     icon: "bi-receipt-cutoff",
     title: "Compras y contratación",
@@ -41,6 +42,7 @@ const portfolioData = {
   // REVISAR: igual que el anterior; confirmar alcance real.
   19: {
     group: "actual",
+    year: "2026",
     kind: "plataforma",
     icon: "bi-people",
     title: "Gestión humana",
@@ -67,6 +69,7 @@ const portfolioData = {
   // (offline-first, sync ERP, impresión Bluetooth/USB). Confirmar cuál hace qué.
   20: {
     group: "actual",
+    year: "2025",
     kind: "movil",
     icon: "bi-phone",
     title: "OPOX",
@@ -93,6 +96,7 @@ const portfolioData = {
   // REVISAR: ver nota de OPOX.
   21: {
     group: "actual",
+    year: "2025",
     kind: "movil",
     icon: "bi-bag-check",
     title: "4ventas",
