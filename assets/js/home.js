@@ -49,6 +49,19 @@
     hero.addEventListener("pointerleave", function () { spot.classList.remove("on"); });
   }
 
+  /* ---------- Hero: las fotos cambian con un fundido lento, cada 5.6 s ---------- */
+  const heroPhotos = document.querySelectorAll(".hero-photo img");
+
+  if (heroPhotos.length > 1 && !reduceMotion.matches) {
+    let shown = 0;
+    setInterval(function () {
+      if (document.hidden) return;
+      heroPhotos[shown].classList.remove("is-on");
+      shown = (shown + 1) % heroPhotos.length;
+      heroPhotos[shown].classList.add("is-on");
+    }, 5600);
+  }
+
   /* ---------- Hero: palabra que cambia cada 2.8 s ---------- */
   const swap = document.querySelector("[data-swap]");
 
