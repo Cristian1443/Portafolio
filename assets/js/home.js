@@ -21,6 +21,91 @@
     }).join("") + "</ul>";
   }
 
+
+  /* ---------- Hero: foco que sigue al cursor (resorte suave, solo transform) ---------- */
+  const hero = document.getElementById("hero");
+  const spot = document.querySelector(".hero-spot");
+
+  if (hero && spot && finePointer.matches && !reduceMotion.matches) {
+    let tx = 0, ty = 0, x = 0, y = 0, raf = 0;
+
+    function follow() {
+      x += (tx - x) * 0.14;
+      y += (ty - y) * 0.14;
+      spot.style.transform = "translate3d(" + x + "px," + y + "px,0)";
+      raf = (Math.abs(tx - x) > 0.4 || Math.abs(ty - y) > 0.4) ? requestAnimationFrame(follow) : 0;
+    }
+
+    hero.addEventListener("pointermove", function (e) {
+      const r = hero.getBoundingClientRect();
+      tx = e.clientX - r.left;
+      ty = e.clientY - r.top;
+      if (!spot.classList.contains("on")) {
+        x = tx; y = ty; // la primera vez aparece donde está el cursor, sin viajar desde la esquina
+        spot.classList.add("on");
+      }
+      if (!raf) raf = requestAnimationFrame(follow);
+    });
+    hero.addEventListener("pointerleave", function () { spot.classList.remove("on"); });
+  }
+
+  /* ---------- Hero: palabra que cambia cada 2.8 s ---------- */
+  const swap = document.querySelector("[data-swap]");
+
+  if (swap && swap.children.length > 1) {
+    const words = Array.prototype.slice.call(swap.children);
+    let index = 0;
+
+    words.forEach(function (w, i) { w.setAttribute("aria-hidden", String(i !== 0)); });
+
+    if (!reduceMotion.matches) {
+      setInterval(function () {
+        if (document.hidden) return;
+        const leaving = words[index];
+        index = (index + 1) % words.length;
+        const entering = words[index];
+
+        leaving.classList.remove("is-active");
+        leaving.classList.add("is-out");
+        leaving.setAttribute("aria-hidden", "true");
+        entering.classList.remove("is-out");
+        entering.classList.add("is-active");
+        entering.setAttribute("aria-hidden", "false");
+
+        setTimeout(function () { leaving.classList.remove("is-out"); }, 420);
+      }, 2800);
+    }
+  }
+
+  /* ---------- Franja de tecnologías: se duplica la lista para el bucle continuo ---------- */
+  const marqueeTrack = document.querySelector(".marquee-track");
+
+  if (marqueeTrack && marqueeTrack.firstElementChild) {
+    const clone = marqueeTrack.firstElementChild.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    marqueeTrack.appendChild(clone);
+  }
+
+  /* ---------- Tarjetas: el brillo sigue al cursor ----------
+     Solo se escribe --mx/--my en la tarjeta que está bajo el puntero. */
+  if (finePointer.matches && !reduceMotion.matches) {
+    let pending = null;
+    let frame = 0;
+
+    document.addEventListener("pointermove", function (e) {
+      const card = e.target.closest && e.target.closest(".case-card, .project-card, .service-item, .skill-card");
+      if (!card) return;
+      pending = { card: card, x: e.clientX, y: e.clientY };
+      if (frame) return;
+      frame = requestAnimationFrame(function () {
+        const r = pending.card.getBoundingClientRect();
+        pending.card.style.setProperty("--mx", (pending.x - r.left) + "px");
+        pending.card.style.setProperty("--my", (pending.y - r.top) + "px");
+        frame = 0;
+      });
+    }, { passive: true });
+  }
+
   /* ---------- Proyectos ---------- */
   const ids = Object.keys(portfolioData).map(Number);
   const current = ids.filter(function (id) { return portfolioData[id].group === "actual"; });

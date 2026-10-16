@@ -59,6 +59,7 @@
 <body class="index-page">
 
   <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
 
   <header id="header" class="header fixed-top">
     <div class="container-fluid header-inner">
@@ -94,11 +95,14 @@
 
     <!-- Hero -->
     <section id="hero" class="hero section dark-background">
+      <span class="hero-orb hero-orb-a" aria-hidden="true"></span>
+      <span class="hero-orb hero-orb-b" aria-hidden="true"></span>
+      <span class="hero-spot" aria-hidden="true"></span>
       <div class="hero-container">
         <img src="assets/img/cristian-hero.webp" class="hero-portrait" width="104" height="104" alt="Cristian Reyes">
         <span class="hero-eyebrow"><span class="dot"></span> Disponible de inmediato · Bogotá, Colombia</span>
         <h1>Cristian Reyes</h1>
-        <p class="hero-lead">Desarrollador Full Stack y de apps móviles. Construyo plataformas internas, aplicaciones offline-first e integraciones con ERP.</p>
+        <p class="hero-lead">Desarrollador Full Stack y de apps móviles.<br>Construyo <span class="swap" data-swap><span class="is-active">plataformas internas</span><span>apps offline-first</span><span>integraciones con ERP</span><span>automatizaciones con n8n</span></span>.</p>
         <ul class="hero-now" aria-label="Trabajo actual">
           <li><strong>Invest in Bogotá</strong> · desarrollo full stack</li>
           <li><strong>Global Snopek</strong> · apps móviles con React Native</li>
@@ -111,6 +115,30 @@
       </div>
     </section>
 
+    <!-- Franja de tecnologías -->
+    <div class="marquee" aria-label="Tecnologías con las que trabajo">
+      <div class="marquee-track">
+        <ul class="marquee-list">
+          <li><i class="devicon-react-original" aria-hidden="true"></i> React Native</li>
+          <li><i class="devicon-nodejs-plain" aria-hidden="true"></i> Node.js</li>
+          <li><i class="devicon-typescript-plain" aria-hidden="true"></i> TypeScript</li>
+          <li><i class="devicon-javascript-plain" aria-hidden="true"></i> JavaScript</li>
+          <li><i class="devicon-angularjs-plain" aria-hidden="true"></i> Angular</li>
+          <li><i class="devicon-express-original" aria-hidden="true"></i> Express</li>
+          <li><i class="devicon-mysql-plain" aria-hidden="true"></i> MySQL</li>
+          <li><i class="devicon-mongodb-plain" aria-hidden="true"></i> MongoDB</li>
+          <li><i class="devicon-postgresql-plain" aria-hidden="true"></i> PostgreSQL</li>
+          <li><i class="devicon-amazonwebservices-original" aria-hidden="true"></i> AWS</li>
+          <li><i class="devicon-azure-plain" aria-hidden="true"></i> Azure</li>
+          <li><i class="devicon-docker-plain" aria-hidden="true"></i> Docker</li>
+          <li><i class="devicon-git-plain" aria-hidden="true"></i> Git</li>
+          <li><i class="devicon-figma-plain" aria-hidden="true"></i> Figma</li>
+          <li><i class="bi bi-diagram-2" aria-hidden="true"></i> n8n</li>
+          <li><i class="bi bi-wifi-off" aria-hidden="true"></i> Offline-first</li>
+        </ul>
+      </div>
+    </div>
+
     <!-- Sobre mí -->
     <section id="about" class="about section">
       <div class="container section-title" data-reveal>
@@ -119,14 +147,14 @@
         <p>Ingeniero de Software egresado, con experiencia real en proyectos locales e internacionales.</p>
       </div>
 
-      <div class="container" data-reveal>
+      <div class="container">
         <div class="row gy-4 justify-content-center">
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-4 col-md-6" data-reveal="left">
             <div class="profile-photo-frame">
               <img src="assets/img/cristian-perfil.webp" width="720" height="1078" loading="lazy" decoding="async" alt="Retrato de Cristian Reyes">
             </div>
           </div>
-          <div class="col-lg-8 content">
+          <div class="col-lg-8 content" data-reveal="right">
             <span class="about-availability"><span class="dot"></span> Egresado · disponible de inmediato</span>
             <h3>Desarrollador Full Stack y Mobile</h3>
             <p>Desarrollador Full Stack con experiencia en proyectos internacionales (Argentina) y locales, especializado en aplicaciones móviles, integración con ERP, arquitectura frontend escalable y automatización de procesos. Con experiencia en proyectos para instituciones como la Cámara de Comercio de Bogotá y empresas de alcance internacional.</p>
@@ -159,7 +187,7 @@
         <p>Lo que respalda el trabajo detrás de cada proyecto.</p>
       </div>
       <div class="container">
-        <div class="row gy-4" data-reveal-group>
+        <div class="row gy-4" data-reveal-group="zoom">
           <div class="col-lg-3 col-6">
             <div class="stat-card">
               <i class="bi bi-calendar-check stat-icon" aria-hidden="true"></i>
@@ -203,7 +231,7 @@
       <div class="container">
         <div class="row gy-5">
 
-          <div class="col-lg-7" data-reveal>
+          <div class="col-lg-7" data-reveal-group>
             <h3 class="resume-title">Experiencia profesional</h3>
 
             <div class="resume-item">
@@ -283,7 +311,7 @@
             </div>
           </div>
 
-          <div class="col-lg-5" data-reveal>
+          <div class="col-lg-5" data-reveal-group>
             <h3 class="resume-title">Educación y certificaciones</h3>
             <div class="resume-item">
               <h4>Ingeniería de Software</h4>
@@ -383,7 +411,7 @@
           <div class="col-lg-4 col-md-6">
             <div class="skill-card">
               <h3><i class="bi bi-braces" aria-hidden="true"></i> Lenguajes</h3>
-              <ul class="badges">
+              <ul class="badges" data-reveal-group="pop">
                 <li><i class="devicon-javascript-plain colored" aria-hidden="true"></i> JavaScript</li>
                 <li><i class="devicon-typescript-plain colored" aria-hidden="true"></i> TypeScript</li>
                 <li><i class="devicon-java-plain colored" aria-hidden="true"></i> Java</li>
@@ -398,7 +426,7 @@
           <div class="col-lg-4 col-md-6">
             <div class="skill-card">
               <h3><i class="bi bi-window-stack" aria-hidden="true"></i> Frontend y móvil</h3>
-              <ul class="badges">
+              <ul class="badges" data-reveal-group="pop">
                 <li><i class="devicon-react-original colored" aria-hidden="true"></i> React Native</li>
                 <li><i class="bi bi-app-indicator" aria-hidden="true"></i> Expo</li>
                 <li><i class="devicon-react-original colored" aria-hidden="true"></i> React</li>
@@ -413,7 +441,7 @@
           <div class="col-lg-4 col-md-6">
             <div class="skill-card">
               <h3><i class="bi bi-hdd-network" aria-hidden="true"></i> Backend y datos</h3>
-              <ul class="badges">
+              <ul class="badges" data-reveal-group="pop">
                 <li><i class="devicon-nodejs-plain colored" aria-hidden="true"></i> Node.js</li>
                 <li><i class="devicon-express-original" aria-hidden="true"></i> Express</li>
                 <li><i class="devicon-spring-plain colored" aria-hidden="true"></i> Spring Boot</li>
@@ -428,7 +456,7 @@
           <div class="col-lg-4 col-md-6">
             <div class="skill-card">
               <h3><i class="bi bi-wifi-off" aria-hidden="true"></i> Móvil offline y hardware</h3>
-              <ul class="badges">
+              <ul class="badges" data-reveal-group="pop">
                 <li><i class="bi bi-wifi-off" aria-hidden="true"></i> Arquitectura offline-first</li>
                 <li><i class="bi bi-arrow-repeat" aria-hidden="true"></i> Sincronización de datos</li>
                 <li><i class="bi bi-database" aria-hidden="true"></i> SQLite / WatermelonDB</li>
@@ -442,7 +470,7 @@
           <div class="col-lg-4 col-md-6">
             <div class="skill-card">
               <h3><i class="bi bi-cloud" aria-hidden="true"></i> Cloud y herramientas</h3>
-              <ul class="badges">
+              <ul class="badges" data-reveal-group="pop">
                 <li><i class="devicon-amazonwebservices-original colored" aria-hidden="true"></i> AWS Educate</li>
                 <li><i class="devicon-azure-plain colored" aria-hidden="true"></i> Azure</li>
                 <li><i class="bi bi-cloud" aria-hidden="true"></i> Aviatrix</li>
@@ -459,7 +487,7 @@
           <div class="col-lg-4 col-md-6">
             <div class="skill-card">
               <h3><i class="bi bi-people" aria-hidden="true"></i> Diseño y liderazgo</h3>
-              <ul class="badges">
+              <ul class="badges" data-reveal-group="pop">
                 <li><i class="devicon-figma-plain colored" aria-hidden="true"></i> Figma</li>
                 <li><i class="bi bi-vector-pen" aria-hidden="true"></i> Adobe XD</li>
                 <li><i class="bi bi-kanban" aria-hidden="true"></i> SCRUM y metodologías ágiles</li>

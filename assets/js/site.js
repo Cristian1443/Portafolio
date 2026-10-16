@@ -11,6 +11,7 @@
 
   /* ---------- Header y botón "subir" (un solo listener, throttled con rAF) ---------- */
   const scrollTopBtn = document.querySelector(".scroll-top");
+  const progressBar = document.querySelector(".scroll-progress");
   let ticking = false;
 
   function onScroll() {
@@ -19,6 +20,10 @@
     requestAnimationFrame(function () {
       const y = window.scrollY;
       body.classList.toggle("scrolled", y > 40);
+      if (progressBar) {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.transform = "scaleX(" + (max > 0 ? Math.min(y / max, 1) : 0) + ")";
+      }
       if (scrollTopBtn) scrollTopBtn.classList.toggle("active", y > 480);
       ticking = false;
     });
@@ -110,7 +115,7 @@
             el.removeAttribute("data-reveal");
             el.classList.remove("is-visible");
             el.style.removeProperty("--reveal-delay");
-          }, delay + 540);
+          }, delay + 780);
         });
       }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 })
     : null;
@@ -120,8 +125,9 @@
 
     // Los hijos de un grupo entran escalonados (60 ms, máximo 6 pasos)
     scope.querySelectorAll("[data-reveal-group]").forEach(function (group) {
+      const variant = group.getAttribute("data-reveal-group");
       Array.prototype.forEach.call(group.children, function (child, i) {
-        child.setAttribute("data-reveal", "");
+        child.setAttribute("data-reveal", variant);
         child.style.setProperty("--reveal-delay", Math.min(i, 6) * 60 + "ms");
       });
       group.removeAttribute("data-reveal-group");
