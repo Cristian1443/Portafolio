@@ -20,7 +20,7 @@
   --background-color: #ffffff;
   --default-color: #4b5563;
   --heading-color: #12161c;
-  --accent-color: #0077ff;
+  --accent-color: #0066e0;
   --accent-color-strong: #0a58ca;
   --accent-color-soft: #eaf2ff;
   --surface-color: #ffffff;
@@ -1139,7 +1139,7 @@ section,
   border: 2px solid var(--accent-color);
   border-radius: 50%;
   background: var(--surface-color);
-  transition: transform 400ms var(--ease-out) 250ms;
+  transition: transform 400ms var(--ease-out) 250ms, opacity 400ms ease 250ms;
 }
 
 .js .resume-item[data-reveal]:not(.is-visible)::after {
@@ -1147,7 +1147,8 @@ section,
 }
 
 .js .resume-item[data-reveal]:not(.is-visible)::before {
-  transform: scale(0);
+  transform: scale(0.5);
+  opacity: 0;
 }
 
 .resume-item:last-child {
@@ -2882,5 +2883,278 @@ section,
 @media (prefers-reduced-motion: reduce) {
   .slip-sales li.is-new {
     animation: none;
+  }
+}
+
+/*--------------------------------------------------------------
+# Mejoras por sección: Sobre mí, Resultados, Experiencia, Servicios, Habilidades
+--------------------------------------------------------------*/
+
+/* Sobre mí: mosaico de fotos reales */
+.about-mosaic {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 14px;
+}
+
+.about-mosaic figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--surface-alt-color);
+}
+
+.about-mosaic img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 900ms var(--ease-soft);
+}
+
+.about-mosaic .m1 {
+  grid-row: 1 / span 2;
+  aspect-ratio: 3 / 4.2;
+}
+
+.about-mosaic .m2,
+.about-mosaic .m3 {
+  aspect-ratio: 4 / 3;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .about-mosaic figure:hover img {
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .about-mosaic {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-mosaic .m1 {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    aspect-ratio: 4 / 4;
+  }
+}
+
+/* Resultados: números grandes con contexto */
+.stats .stat-card {
+  height: 100%;
+  padding: 30px 26px;
+  text-align: left;
+}
+
+.stat-number {
+  font-size: clamp(2.6rem, 4.6vw, 3.75rem);
+  line-height: 1;
+  color: var(--accent-color-strong);
+}
+
+.stat-label {
+  margin: 10px 0 6px;
+  font-size: 16px;
+  color: var(--heading-color);
+}
+
+.stat-context {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--default-color);
+}
+
+/* Experiencia: acordeón con la línea de tiempo */
+.resume-item .resume-toggle {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.resume-head {
+  display: block;
+  min-width: 0;
+}
+
+.resume-head .rt {
+  display: block;
+  font-family: var(--heading-font);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--heading-color);
+  overflow-wrap: anywhere;
+}
+
+.resume-toggle .resume-meta {
+  display: block;
+  margin: 4px 0 0;
+}
+
+.resume-toggle i {
+  flex: none;
+  margin-top: 4px;
+  font-size: 16px;
+  color: var(--accent-color-strong);
+  transition: transform var(--dur-ui) var(--ease-out);
+}
+
+.resume-item[data-open="true"] .resume-toggle i {
+  transform: rotate(180deg);
+}
+
+.resume-item h4 {
+  margin: 0;
+}
+
+.resume-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 320ms var(--ease-out), visibility 0s linear 320ms;
+}
+
+.resume-body > div {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.resume-item[data-open="true"] .resume-body {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition: grid-template-rows 320ms var(--ease-out), visibility 0s;
+}
+
+.resume-body ul {
+  margin-top: 12px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .resume-toggle:hover .rt {
+    color: var(--accent-color-strong);
+  }
+}
+
+.resume-toggle:active {
+  transform: scale(0.995);
+}
+
+/* Servicios: cada uno con el trabajo que lo respalda */
+.service-proof {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 18px;
+  font-size: 13.5px;
+}
+
+.service-proof span {
+  width: 100%;
+  color: var(--default-color);
+}
+
+.service-proof a {
+  padding: 3px 11px;
+  border: 1px solid var(--line-color);
+  border-radius: var(--radius-pill);
+  background: var(--surface-alt-color);
+  color: var(--accent-color-strong);
+  font-weight: 600;
+  transition: border-color var(--dur-ui) ease, background-color var(--dur-ui) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .service-proof a:hover {
+    border-color: var(--accent-color);
+    background: var(--accent-color-soft);
+  }
+}
+
+/* Habilidades: las que uso hoy */
+.badges li.now {
+  border-color: color-mix(in srgb, var(--accent-color), white 55%);
+  background: var(--accent-color-soft);
+  color: var(--accent-color-strong);
+  font-weight: 600;
+}
+
+.badges li.now::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-color);
+}
+
+/* Legibilidad: cuerpo de texto mínimo de 16 px y contraste AA */
+.resume-item ul li,
+.case-card > p,
+.service-item p,
+.project-summary,
+.blog-content p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.resume-meta {
+  font-size: 15px;
+}
+
+.chips li {
+  font-size: 13.5px;
+}
+
+.badges li {
+  font-size: 15px;
+}
+
+/* Toques finales de las skills: objetivos táctiles, citas legibles y movimiento reducido */
+.service-proof a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 4px 12px;
+}
+
+.t-slide blockquote {
+  max-width: 760px;
+  font-size: clamp(1.125rem, 1rem + 0.7vw, 1.5rem);
+  line-height: 1.6;
+}
+
+@media (max-width: 575.98px) {
+  .stat-context {
+    font-size: 13.5px;
+  }
+
+  .stats .stat-card {
+    padding: 24px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resume-body,
+  .resume-item[data-open="true"] .resume-body {
+    transition: none;
+  }
+
+  .about-mosaic img {
+    transition: none;
   }
 }

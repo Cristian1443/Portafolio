@@ -420,6 +420,16 @@
     saleBtn.addEventListener("click", addSale);
   }
 
+  /* ---------- Experiencia: acordeón (los dos empleos actuales vienen abiertos) ---------- */
+  document.querySelectorAll(".resume-toggle").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      const item = btn.closest(".resume-item");
+      const open = item.dataset.open !== "true";
+      item.dataset.open = String(open);
+      btn.setAttribute("aria-expanded", String(open));
+    });
+  });
+
   /* ---------- Contacto: el formulario abre el correo con el mensaje listo ----------
      El sitio es estático (no hay servidor que reciba formularios), así que se arma
      un mailto: en lugar de un envío que fallaría en silencio. */

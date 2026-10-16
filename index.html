@@ -157,17 +157,20 @@
       </div>
 
       <div class="container">
-        <div class="row gy-4 justify-content-center">
-          <div class="col-lg-4 col-md-6" data-reveal="left">
-            <div class="profile-photo-frame">
-              <img src="assets/img/cristian-perfil.webp" width="720" height="1078" loading="lazy" decoding="async" alt="Retrato de Cristian Reyes">
+        <div class="row gy-5 align-items-center">
+          <div class="col-lg-6" data-reveal="left">
+            <div class="about-mosaic">
+              <figure class="m1"><img src="assets/img/cristian-perfil.webp" width="720" height="1078" loading="lazy" decoding="async" alt="Retrato de Cristian Reyes"></figure>
+              <figure class="m2"><img src="assets/img/blog-makers.webp" width="960" height="720" loading="lazy" decoding="async" alt="Grupo del programa Makers con sus certificados"></figure>
+              <figure class="m3"><img src="assets/img/blog-liderazgo.webp" width="960" height="720" loading="lazy" decoding="async" alt="Cristian con su equipo en un evento"></figure>
             </div>
           </div>
-          <div class="col-lg-8 content" data-reveal="right">
+
+          <div class="col-lg-6 content" data-reveal="right">
             <span class="about-availability"><span class="dot"></span> Egresado · disponible de inmediato</span>
             <h3>Desarrollador Full Stack y Mobile</h3>
-            <p>Desarrollador Full Stack con experiencia en proyectos internacionales (Argentina) y locales, especializado en aplicaciones móviles, integración con ERP, arquitectura frontend escalable y automatización de procesos. Con experiencia en proyectos para instituciones como la Cámara de Comercio de Bogotá y empresas de alcance internacional.</p>
-            <p>Egresado de Ingeniería de Software (en espera de grado, Uniempresarial). Trabajo con React, Angular, Node.js y n8n, y combino liderazgo técnico con metodologías ágiles para entregar resultados medibles. Busco un equipo donde pueda aportar soluciones que mejoren la eficiencia operativa y comercial.</p>
+            <p>Desarrollador full stack con experiencia en proyectos locales e internacionales (Argentina). Me especializo en apps móviles, integración con ERP, frontend escalable y automatización de procesos, con trabajo para la Cámara de Comercio de Bogotá y empresas de alcance internacional.</p>
+            <p>Egresado de Ingeniería de Software (en espera de grado, Uniempresarial). Trabajo con React, Angular, Node.js y n8n, y combino liderazgo técnico con metodologías ágiles. Busco un equipo donde pueda aportar soluciones que mejoren la eficiencia operativa y comercial.</p>
 
             <dl class="facts">
               <div><dt>Ciudad</dt><dd>Bogotá, Colombia</dd></div>
@@ -199,30 +202,30 @@
         <div class="row gy-4" data-reveal-group="zoom">
           <div class="col-lg-3 col-6">
             <div class="stat-card">
-              <i class="bi bi-calendar-check stat-icon" aria-hidden="true"></i>
               <span class="stat-number" data-count="3" data-suffix="+">3+</span>
-              <p>Años de experiencia</p>
+              <p class="stat-label">Años de experiencia</p>
+              <p class="stat-context">Proyectos reales desde 2023.</p>
             </div>
           </div>
           <div class="col-lg-3 col-6">
             <div class="stat-card">
-              <i class="bi bi-folder-check stat-icon" aria-hidden="true"></i>
               <span class="stat-number" data-count="15" data-suffix="+">15+</span>
-              <p>Proyectos completados</p>
+              <p class="stat-label">Proyectos</p>
+              <p class="stat-context">Web, apps, plataformas y cloud.</p>
             </div>
           </div>
           <div class="col-lg-3 col-6">
             <div class="stat-card">
-              <i class="bi bi-people stat-icon" aria-hidden="true"></i>
               <span class="stat-number" data-count="5" data-suffix="+">5+</span>
-              <p>Clientes y entidades</p>
+              <p class="stat-label">Clientes y entidades</p>
+              <p class="stat-context">Invest in Bogotá, Global Snopek, CCB, Minority Chamber y Uniempresarial.</p>
             </div>
           </div>
           <div class="col-lg-3 col-6">
             <div class="stat-card">
-              <i class="bi bi-code-slash stat-icon" aria-hidden="true"></i>
               <span class="stat-number" data-count="20" data-suffix="+">20+</span>
-              <p>Tecnologías</p>
+              <p class="stat-label">Tecnologías</p>
+              <p class="stat-context">De React Native y Node.js a n8n y Bluetooth.</p>
             </div>
           </div>
         </div>
@@ -292,81 +295,104 @@
 
           <div class="col-lg-7" data-reveal-group>
             <h3 class="resume-title">Experiencia profesional</h3>
-
-            <div class="resume-item">
-              <h4>Contratista de desarrollo full stack</h4>
-              <p class="resume-meta"><strong>Invest in Bogotá</strong> · Julio 2026 – presente · antes, pasante de desarrollo (enero – junio 2026)</p>
-              <ul>
-                <li><strong>Desarrollo full stack:</strong> desarrollo y mantenimiento de plataformas y herramientas digitales internas de la entidad: frontend, backend e integraciones con el stack JavaScript/Node.js.</li>
-                <li><strong>Crecimiento interno:</strong> de pasante a contratista tras seis meses de aporte técnico, con mayor autonomía sobre el ciclo completo de desarrollo.</li>
-                <li><strong>Trabajo interdisciplinario:</strong> colaboración con equipos de la entidad en iniciativas de transformación digital para la promoción de inversión y comercio exterior de Bogotá.</li>
-              </ul>
-              <div class="resume-projects">
-                <span>Proyectos:</span>
-                <a href="portfolio-details.html?id=18">Compras y contratación <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
-                <a href="portfolio-details.html?id=19">Gestión humana <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
-              </div>
+            <div class="resume-item" data-open="true">
+              <h4><button class="resume-toggle" type="button" aria-expanded="true" aria-controls="r1">
+                <span class="resume-head"><span class="rt">Contratista de desarrollo full stack</span><span class="resume-meta"><strong>Invest in Bogotá</strong> · Julio 2026 – presente · antes, pasante (enero – junio 2026)</span></span>
+                <i class="bi bi-chevron-down" aria-hidden="true"></i>
+              </button></h4>
+              <div class="resume-body" id="r1"><div>
+                <ul>
+                  <li><strong>Desarrollo full stack:</strong> plataformas y herramientas digitales internas de la entidad: frontend, backend e integraciones con el stack JavaScript/Node.js.</li>
+                  <li><strong>Crecimiento interno:</strong> de pasante a contratista tras seis meses de aporte técnico, con mayor autonomía sobre el ciclo completo de desarrollo.</li>
+                  <li><strong>Trabajo interdisciplinario:</strong> colaboración con equipos de la entidad en iniciativas de transformación digital para la promoción de inversión y comercio exterior de Bogotá.</li>
+                </ul>
+                <div class="resume-projects">
+                  <span>Proyectos:</span>
+                  <a href="portfolio-details.html?id=18">Compras y contratación <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                  <a href="portfolio-details.html?id=19">Gestión humana <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                </div>
+              </div></div>
             </div>
-
-            <div class="resume-item">
-              <h4>Desarrollador de aplicaciones móviles (React Native)</h4>
-              <p class="resume-meta"><strong>Global Snopek (Argentina)</strong> · Octubre 2025 – presente · remoto</p>
-              <ul>
-                <li><strong>Arquitectura offline-first:</strong> app móvil con operación 100 % offline, con bases de datos locales (SQLite/Realm) para garantizar la continuidad sin internet.</li>
-                <li><strong>Sincronización con ERP:</strong> lógica de sincronización bidireccional que asegura la integridad de inventarios y ventas al reconectar con el servidor central.</li>
-                <li><strong>Integración de hardware:</strong> módulos de impresión matricial y térmica por Bluetooth/USB para emitir facturas y recibos desde la app.</li>
-                <li><strong>Mantenimiento y soporte:</strong> mejoras de rendimiento y soporte a aplicaciones legacy del ecosistema, con menores tiempos de respuesta para el equipo de ventas en campo.</li>
-              </ul>
-              <div class="resume-projects">
-                <span>Proyectos:</span>
-                <a href="portfolio-details.html?id=20">OPOX <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
-                <a href="portfolio-details.html?id=21">4ventas <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
-              </div>
+            <div class="resume-item" data-open="true">
+              <h4><button class="resume-toggle" type="button" aria-expanded="true" aria-controls="r2">
+                <span class="resume-head"><span class="rt">Desarrollador de aplicaciones móviles (React Native)</span><span class="resume-meta"><strong>Global Snopek (Argentina)</strong> · Octubre 2025 – presente · remoto</span></span>
+                <i class="bi bi-chevron-down" aria-hidden="true"></i>
+              </button></h4>
+              <div class="resume-body" id="r2"><div>
+                <ul>
+                  <li><strong>Arquitectura offline-first:</strong> app móvil con operación 100 % offline y bases de datos locales (SQLite/Realm) para garantizar la continuidad sin internet.</li>
+                  <li><strong>Sincronización con ERP:</strong> lógica bidireccional que asegura la integridad de inventarios y ventas al reconectar con el servidor central.</li>
+                  <li><strong>Integración de hardware:</strong> impresión matricial y térmica por Bluetooth/USB para emitir facturas y recibos desde la app.</li>
+                  <li><strong>Mantenimiento y soporte:</strong> mejoras de rendimiento y soporte a aplicaciones legacy del ecosistema para el equipo de ventas en campo.</li>
+                </ul>
+                <div class="resume-projects">
+                  <span>Proyectos:</span>
+                  <a href="portfolio-details.html?id=20">OPOX <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                  <a href="portfolio-details.html?id=21">4ventas <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                </div>
+              </div></div>
             </div>
-
-            <div class="resume-item">
-              <h4>Frontend Developer Lead (UI/UX y arquitectura escalable)</h4>
-              <p class="resume-meta"><strong>FUsoft · Uniempresarial</strong> · Enero – julio 2025</p>
-              <ul>
-                <li><strong>Liderazgo frontend:</strong> diseño, desarrollo y gestión de proyectos frontend con foco en experiencia de usuario y escalabilidad.</li>
-                <li><strong>Coordinación multidisciplinaria:</strong> equipo para proyectos institucionales de alto impacto, como soluciones para la Cámara de Comercio de Bogotá.</li>
-                <li><strong>Interfaces modernas:</strong> React y Astro integrados con servicios backend en Node.js.</li>
-                <li><strong>Arquitectura escalable:</strong> componentes reutilizables y estilos UI consistentes, fáciles de mantener.</li>
-                <li><strong>Gestión técnica:</strong> planificación, estimaciones, asignación de tareas y seguimiento ágil con SCRUM.</li>
-                <li><strong>Calidad y despliegue:</strong> calidad de código, experiencia de usuario y despliegue eficiente.</li>
-              </ul>
+            <div class="resume-item" data-open="false">
+              <h4><button class="resume-toggle" type="button" aria-expanded="false" aria-controls="r3">
+                <span class="resume-head"><span class="rt">Frontend Developer Lead (UI/UX y arquitectura escalable)</span><span class="resume-meta"><strong>FUsoft · Uniempresarial</strong> · Enero – julio 2025</span></span>
+                <i class="bi bi-chevron-down" aria-hidden="true"></i>
+              </button></h4>
+              <div class="resume-body" id="r3"><div>
+                <ul>
+                  <li><strong>Liderazgo frontend:</strong> diseño, desarrollo y gestión de proyectos frontend con foco en experiencia de usuario y escalabilidad.</li>
+                  <li><strong>Coordinación multidisciplinaria:</strong> equipo para proyectos institucionales de alto impacto, como soluciones para la Cámara de Comercio de Bogotá.</li>
+                  <li><strong>Interfaces modernas:</strong> React y Astro integrados con servicios backend en Node.js.</li>
+                  <li><strong>Arquitectura escalable:</strong> componentes reutilizables y estilos UI consistentes, fáciles de mantener.</li>
+                  <li><strong>Gestión técnica:</strong> planificación, estimaciones, asignación de tareas y seguimiento ágil con SCRUM.</li>
+                  <li><strong>Calidad y despliegue:</strong> calidad de código, experiencia de usuario y despliegue eficiente.</li>
+                </ul>
+                <div class="resume-projects">
+                  <span>Proyectos:</span>
+                  <a href="portfolio-details.html?id=9">Fusoft <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                  <a href="portfolio-details.html?id=16">Relacionamiento CCB <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                </div>
+              </div></div>
             </div>
-
-            <div class="resume-item">
-              <h4>Web master y desarrollador de automatizaciones</h4>
-              <p class="resume-meta"><strong>Bisutería Beads y Ebenezer Bisutería</strong> · 2025 – presente</p>
-              <ul>
-                <li><strong>Administración web:</strong> gestión integral de los sitios y la presencia digital de ambas marcas: catálogo, contenido y mantenimiento técnico.</li>
-                <li><strong>Automatización de flujos:</strong> procesos críticos y de marketing con n8n y SendPulse, para reducir la carga operativa manual.</li>
-                <li><strong>Integración de sistemas:</strong> soluciones para optimizar la comunicación con clientes y la gestión de datos internos.</li>
-              </ul>
+            <div class="resume-item" data-open="false">
+              <h4><button class="resume-toggle" type="button" aria-expanded="false" aria-controls="r4">
+                <span class="resume-head"><span class="rt">Web master y desarrollador de automatizaciones</span><span class="resume-meta"><strong>Bisutería Beads y Ebenezer Bisutería</strong> · 2025 – presente</span></span>
+                <i class="bi bi-chevron-down" aria-hidden="true"></i>
+              </button></h4>
+              <div class="resume-body" id="r4"><div>
+                <ul>
+                  <li><strong>Administración web:</strong> gestión integral de los sitios y la presencia digital de ambas marcas: catálogo, contenido y mantenimiento técnico.</li>
+                  <li><strong>Automatización de flujos:</strong> procesos críticos y de marketing con n8n y SendPulse, para reducir la carga operativa manual.</li>
+                  <li><strong>Integración de sistemas:</strong> soluciones para optimizar la comunicación con clientes y la gestión de datos internos.</li>
+                </ul>
+              </div></div>
             </div>
-
-            <div class="resume-item">
-              <h4>Desarrollo full stack</h4>
-              <p class="resume-meta"><strong>Minority Chamber of Commerce</strong> · 2024 – 2025</p>
-              <ul>
-                <li>Soporte al desarrollo y mantenimiento de plataformas web con Angular, Spring Boot y Laravel.</li>
-                <li>Optimización de consultas MySQL: tiempos de carga 30 % menores.</li>
-                <li>Componentes reutilizables en el frontend e integración fluida con el equipo de backend.</li>
-                <li>Ajustes de infraestructura para estabilidad, rendimiento y seguridad en producción.</li>
-              </ul>
+            <div class="resume-item" data-open="false">
+              <h4><button class="resume-toggle" type="button" aria-expanded="false" aria-controls="r5">
+                <span class="resume-head"><span class="rt">Desarrollo full stack</span><span class="resume-meta"><strong>Minority Chamber of Commerce</strong> · 2024 – 2025</span></span>
+                <i class="bi bi-chevron-down" aria-hidden="true"></i>
+              </button></h4>
+              <div class="resume-body" id="r5"><div>
+                <ul>
+                  <li>Soporte al desarrollo y mantenimiento de plataformas web con Angular, Spring Boot y Laravel.</li>
+                  <li>Optimización de consultas MySQL: tiempos de carga 30 % menores.</li>
+                  <li>Componentes reutilizables en el frontend e integración fluida con el equipo de backend.</li>
+                  <li>Ajustes de infraestructura para estabilidad, rendimiento y seguridad en producción.</li>
+                </ul>
+              </div></div>
             </div>
-
-            <div class="resume-item">
-              <h4>Desarrollo web y automatización</h4>
-              <p class="resume-meta"><strong>Kaniluu, cadena de heladerías</strong> · 2023 – 2025</p>
-              <ul>
-                <li>Carta digital responsiva con HTML, CSS y JavaScript que facilitó los pedidos online.</li>
-                <li>Integración con MySQL para control de inventario y sincronización con servicios de domicilio.</li>
-                <li>Automatización de procesos administrativos y de gestión de productos con scripts a la medida.</li>
-                <li>Mantenimiento técnico y actualización de la plataforma.</li>
-              </ul>
+            <div class="resume-item" data-open="false">
+              <h4><button class="resume-toggle" type="button" aria-expanded="false" aria-controls="r6">
+                <span class="resume-head"><span class="rt">Desarrollo web y automatización</span><span class="resume-meta"><strong>Kaniluu, cadena de heladerías</strong> · 2023 – 2025</span></span>
+                <i class="bi bi-chevron-down" aria-hidden="true"></i>
+              </button></h4>
+              <div class="resume-body" id="r6"><div>
+                <ul>
+                  <li>Carta digital responsiva con HTML, CSS y JavaScript que facilitó los pedidos online.</li>
+                  <li>Integración con MySQL para control de inventario y sincronización con servicios de domicilio.</li>
+                  <li>Automatización de procesos administrativos y de gestión de productos con scripts a la medida.</li>
+                  <li>Mantenimiento técnico y actualización de la plataforma.</li>
+                </ul>
+              </div></div>
             </div>
           </div>
 
@@ -461,7 +487,7 @@
       <div class="container section-title" data-reveal>
         <span class="eyebrow">Habilidades</span>
         <h2>Herramientas con las que trabajo</h2>
-        <p>Agrupadas por área, para que sea fácil ver qué cubro de punta a punta.</p>
+        <p>Agrupadas por área. Las resaltadas son las que uso hoy en Invest in Bogotá y Global Snopek.</p>
       </div>
 
       <div class="container">
@@ -471,7 +497,7 @@
             <div class="skill-card">
               <h3><i class="bi bi-braces" aria-hidden="true"></i> Lenguajes</h3>
               <ul class="badges" data-reveal-group="pop">
-                <li><i class="devicon-javascript-plain colored" aria-hidden="true"></i> JavaScript</li>
+                <li class="now"><i class="devicon-javascript-plain colored" aria-hidden="true"></i> JavaScript</li>
                 <li><i class="devicon-typescript-plain colored" aria-hidden="true"></i> TypeScript</li>
                 <li><i class="devicon-java-plain colored" aria-hidden="true"></i> Java</li>
                 <li><i class="devicon-python-plain colored" aria-hidden="true"></i> Python</li>
@@ -486,7 +512,7 @@
             <div class="skill-card">
               <h3><i class="bi bi-window-stack" aria-hidden="true"></i> Frontend y móvil</h3>
               <ul class="badges" data-reveal-group="pop">
-                <li><i class="devicon-react-original colored" aria-hidden="true"></i> React Native</li>
+                <li class="now"><i class="devicon-react-original colored" aria-hidden="true"></i> React Native</li>
                 <li><i class="bi bi-app-indicator" aria-hidden="true"></i> Expo</li>
                 <li><i class="devicon-react-original colored" aria-hidden="true"></i> React</li>
                 <li><i class="devicon-angularjs-plain colored" aria-hidden="true"></i> Angular</li>
@@ -501,7 +527,7 @@
             <div class="skill-card">
               <h3><i class="bi bi-hdd-network" aria-hidden="true"></i> Backend y datos</h3>
               <ul class="badges" data-reveal-group="pop">
-                <li><i class="devicon-nodejs-plain colored" aria-hidden="true"></i> Node.js</li>
+                <li class="now"><i class="devicon-nodejs-plain colored" aria-hidden="true"></i> Node.js</li>
                 <li><i class="devicon-express-original" aria-hidden="true"></i> Express</li>
                 <li><i class="devicon-spring-plain colored" aria-hidden="true"></i> Spring Boot</li>
                 <li><i class="devicon-laravel-plain colored" aria-hidden="true"></i> Laravel</li>
@@ -516,12 +542,12 @@
             <div class="skill-card">
               <h3><i class="bi bi-wifi-off" aria-hidden="true"></i> Móvil offline y hardware</h3>
               <ul class="badges" data-reveal-group="pop">
-                <li><i class="bi bi-wifi-off" aria-hidden="true"></i> Arquitectura offline-first</li>
-                <li><i class="bi bi-arrow-repeat" aria-hidden="true"></i> Sincronización de datos</li>
-                <li><i class="bi bi-database" aria-hidden="true"></i> SQLite / WatermelonDB</li>
-                <li><i class="bi bi-diagram-3" aria-hidden="true"></i> Integración con ERP</li>
-                <li><i class="bi bi-bluetooth" aria-hidden="true"></i> Bluetooth Low Energy</li>
-                <li><i class="bi bi-printer" aria-hidden="true"></i> Impresión térmica y matricial</li>
+                <li class="now"><i class="bi bi-wifi-off" aria-hidden="true"></i> Arquitectura offline-first</li>
+                <li class="now"><i class="bi bi-arrow-repeat" aria-hidden="true"></i> Sincronización de datos</li>
+                <li class="now"><i class="bi bi-database" aria-hidden="true"></i> SQLite / WatermelonDB</li>
+                <li class="now"><i class="bi bi-diagram-3" aria-hidden="true"></i> Integración con ERP</li>
+                <li class="now"><i class="bi bi-bluetooth" aria-hidden="true"></i> Bluetooth Low Energy</li>
+                <li class="now"><i class="bi bi-printer" aria-hidden="true"></i> Impresión térmica y matricial</li>
               </ul>
             </div>
           </div>
@@ -535,7 +561,7 @@
                 <li><i class="bi bi-cloud" aria-hidden="true"></i> Aviatrix</li>
                 <li><i class="devicon-git-plain colored" aria-hidden="true"></i> Git</li>
                 <li><i class="devicon-jira-plain colored" aria-hidden="true"></i> Jira</li>
-                <li><i class="bi bi-diagram-2" aria-hidden="true"></i> n8n</li>
+                <li class="now"><i class="bi bi-diagram-2" aria-hidden="true"></i> n8n</li>
                 <li><i class="bi bi-envelope" aria-hidden="true"></i> SendPulse</li>
                 <li><i class="bi bi-microsoft" aria-hidden="true"></i> Office 365</li>
                 <li><i class="devicon-unity-original" aria-hidden="true"></i> Unity Essentials</li>
@@ -566,7 +592,7 @@
       <div class="container section-title" data-reveal>
         <span class="eyebrow">Servicios</span>
         <h2>En qué puedo ayudarte</h2>
-        <p>Del primer prototipo a un producto que el equipo usa todos los días.</p>
+        <p>Del primer prototipo a un producto que el equipo usa todos los días. Cada servicio, con el trabajo que lo respalda.</p>
       </div>
 
       <div class="container">
@@ -576,6 +602,10 @@
               <div class="icon"><i class="bi bi-window-stack" aria-hidden="true"></i></div>
               <h3><a href="#contact" class="stretched-link">Plataformas internas y full stack</a></h3>
               <p>Aplicaciones web a la medida para procesos internos: del frontend al backend, con React, Angular y Node.js.</p>
+              <div class="service-proof">
+                <span>Lo he hecho en:</span>
+                <a href="portfolio-details.html?id=18">Compras y contratación</a><a href="portfolio-details.html?id=19">Gestión humana</a><a href="portfolio-details.html?id=8">Campus Virtual</a>
+              </div>
               <span class="service-cta">Hablemos <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
             </div>
           </div>
@@ -584,6 +614,10 @@
               <div class="icon"><i class="bi bi-phone" aria-hidden="true"></i></div>
               <h3><a href="#contact" class="stretched-link">Apps móviles offline-first</a></h3>
               <p>Aplicaciones en React Native que siguen funcionando sin conexión, sincronizan con tu ERP e imprimen desde el celular.</p>
+              <div class="service-proof">
+                <span>Lo he hecho en:</span>
+                <a href="portfolio-details.html?id=20">OPOX</a><a href="portfolio-details.html?id=21">4ventas</a><a href="portfolio-details.html?id=12">Foodboleros</a>
+              </div>
               <span class="service-cta">Hablemos <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
             </div>
           </div>
@@ -592,6 +626,10 @@
               <div class="icon"><i class="bi bi-diagram-3" aria-hidden="true"></i></div>
               <h3><a href="#contact" class="stretched-link">Integración y automatización</a></h3>
               <p>Conexión con ERP y flujos automáticos con n8n para quitar trabajo manual y mantener los datos consistentes.</p>
+              <div class="service-proof">
+                <span>Lo he hecho en:</span>
+                <a href="#resume">Beads y Ebenezer</a><a href="#resume">Kaniluu</a><a href="#offline">Sincronización con ERP</a>
+              </div>
               <span class="service-cta">Hablemos <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
             </div>
           </div>
@@ -600,6 +638,10 @@
               <div class="icon"><i class="bi bi-kanban" aria-hidden="true"></i></div>
               <h3><a href="#contact" class="stretched-link">Liderazgo técnico</a></h3>
               <p>Planeación, estimaciones y seguimiento ágil con SCRUM; coordinación de equipos de desarrollo.</p>
+              <div class="service-proof">
+                <span>Lo he hecho en:</span>
+                <a href="portfolio-details.html?id=9">Fusoft</a><a href="portfolio-details.html?id=16">Relacionamiento CCB</a><a href="portfolio-details.html?id=17">Virtualización</a>
+              </div>
               <span class="service-cta">Hablemos <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
             </div>
           </div>
