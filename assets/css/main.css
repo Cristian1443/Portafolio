@@ -2665,3 +2665,175 @@ section,
     transition: none;
   }
 }
+
+/*--------------------------------------------------------------
+# Cómo trabajo: comprobante y modo sin internet
+--------------------------------------------------------------*/
+.offline .section-title {
+  max-width: none;
+  margin: 0 0 30px;
+  text-align: left;
+}
+
+.offline .section-title p {
+  max-width: 44ch;
+}
+
+.offline-demo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 22px;
+}
+
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #ffffff;
+  font-family: var(--nav-font);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.switch-track {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.16);
+  transition: background-color var(--dur-ui) ease;
+}
+
+.switch-knob {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #cbd2dd;
+  transition: transform var(--dur-ui) var(--ease-out), background-color var(--dur-ui) ease;
+}
+
+.switch[aria-checked="true"] .switch-track {
+  background: var(--accent-color);
+}
+
+.switch[aria-checked="true"] .switch-knob {
+  background: #ffffff;
+  transform: translateX(24px);
+}
+
+.offline-note {
+  width: 100%;
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.slip {
+  position: relative;
+  max-width: 460px;
+  margin-left: auto;
+  padding: 30px 28px 54px;
+  background: #f4f5f7;
+  color: #12161c;
+  font-size: 15.5px;
+  line-height: 1.45;
+  font-variant-numeric: tabular-nums;
+  /* borde inferior en zigzag, como papel cortado de la impresora */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), 96% 100%, 92% calc(100% - 12px), 88% 100%, 84% calc(100% - 12px), 80% 100%, 76% calc(100% - 12px), 72% 100%, 68% calc(100% - 12px), 64% 100%, 60% calc(100% - 12px), 56% 100%, 52% calc(100% - 12px), 48% 100%, 44% calc(100% - 12px), 40% 100%, 36% calc(100% - 12px), 32% 100%, 28% calc(100% - 12px), 24% 100%, 20% calc(100% - 12px), 16% 100%, 12% calc(100% - 12px), 8% 100%, 4% calc(100% - 12px), 0 100%);
+}
+
+.slip-title {
+  margin: 0;
+  font-weight: 700;
+}
+
+.slip h3 {
+  margin: 26px 0 6px;
+  font-family: var(--default-font);
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #12161c;
+}
+
+.slip ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.slip li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 3px 0;
+}
+
+.slip .dots {
+  flex: 1 1 12px;
+  min-width: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  opacity: 0.6;
+}
+
+.slip .dots::after {
+  content: ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .";
+}
+
+.slip .val {
+  flex: 0 0 auto;
+  text-align: right;
+}
+
+.slip-empty {
+  margin: 0;
+  padding: 3px 0;
+  opacity: 0.7;
+}
+
+.slip-total {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2px 12px;
+  margin: 26px -28px 0;
+  padding: 10px 28px;
+  background: #12161c;
+  color: #f4f5f7;
+  font-weight: 500;
+}
+
+/* Las filas nuevas salen como papel que avanza en la impresora */
+@keyframes feed {
+  from { clip-path: inset(0 0 100% 0); transform: translateY(-6px); }
+  to { clip-path: inset(0); transform: none; }
+}
+
+.slip-sales li.is-new {
+  animation: feed 420ms steps(6, end) both;
+}
+
+@media (max-width: 991.98px) {
+  .slip {
+    margin-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slip-sales li.is-new {
+    animation: none;
+  }
+}

@@ -342,6 +342,71 @@
     dialog.addEventListener("close", release);
   }
 
+  /* ---------- Cómo trabajo: el modo sin conexión, en vivo ---------- */
+  const netSwitch = document.getElementById("net-switch");
+  const saleBtn = document.getElementById("sale-btn");
+  const salesList = document.getElementById("sales");
+
+  if (netSwitch && saleBtn && salesList) {
+    const netLabel = document.getElementById("net-label");
+    const salesEmpty = document.getElementById("sales-empty");
+    const salesStatus = document.getElementById("sales-status");
+    let online = false;
+    let count = 0;
+    let syncTimers = [];
+
+    function updateStatus() {
+      const pending = salesList.querySelectorAll('li[data-state="pending"]').length;
+      const synced = salesList.querySelectorAll('li[data-state="synced"]').length;
+      salesStatus.textContent = pending + (pending === 1 ? " pendiente" : " pendientes") +
+        (synced ? " · " + synced + (synced === 1 ? " sincronizada" : " sincronizadas") : "");
+    }
+
+    function setState(li, state) {
+      li.dataset.state = state;
+      li.querySelector(".val").textContent = state === "pending" ? "pendiente" : "sincronizada";
+    }
+
+    function addSale() {
+      count += 1;
+      const time = new Date().toLocaleTimeString("es-CO", { hour: "2-digit", minute: "2-digit" });
+      const li = document.createElement("li");
+      li.className = "is-new";
+      li.innerHTML = '<span class="what">Venta ' + count + " · " + time + '</span><span class="dots" aria-hidden="true"></span><span class="val"></span>';
+      salesList.appendChild(li);
+      setState(li, "pending");
+      salesEmpty.hidden = true;
+
+      // Se conservan las últimas seis para que el comprobante no crezca sin fin
+      while (salesList.children.length > 6) salesList.removeChild(salesList.firstElementChild);
+
+      if (online) {
+        syncTimers.push(setTimeout(function () { setState(li, "synced"); updateStatus(); }, 600));
+      }
+      updateStatus();
+    }
+
+    function setOnline(next) {
+      online = next;
+      netSwitch.setAttribute("aria-checked", String(online));
+      netLabel.textContent = online ? "Internet encendido" : "Internet apagado";
+
+      if (online) {
+        // Los pendientes se sincronizan uno tras otro, como papel que sale de la impresora
+        const pending = Array.prototype.slice.call(salesList.querySelectorAll('li[data-state="pending"]'));
+        pending.forEach(function (li, i) {
+          syncTimers.push(setTimeout(function () { setState(li, "synced"); updateStatus(); }, 450 + i * 420));
+        });
+      } else {
+        syncTimers.forEach(clearTimeout);
+        syncTimers = [];
+      }
+    }
+
+    netSwitch.addEventListener("click", function () { setOnline(!online); });
+    saleBtn.addEventListener("click", addSale);
+  }
+
   /* ---------- Contacto: el formulario abre el correo con el mensaje listo ----------
      El sitio es estático (no hay servidor que reciba formularios), así que se arma
      un mailto: en lugar de un envío que fallaría en silencio. */

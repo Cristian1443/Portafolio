@@ -53,7 +53,7 @@
 
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/main.css?v=20261016" rel="stylesheet">
 </head>
 
 <body class="index-page">
@@ -216,6 +216,56 @@
               <p>Tecnologías</p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cómo trabajo: el comprobante y el modo sin internet -->
+    <section id="offline" class="offline section dark-background">
+      <div class="container">
+        <div class="row gy-5 align-items-start">
+
+          <div class="col-lg-6" data-reveal="left">
+            <div class="section-title">
+              <span class="eyebrow">Cómo trabajo</span>
+              <h2>Vender sin internet</h2>
+              <p>Así trabajan las apps móviles que desarrollo para Global Snopek: la venta se guarda en el teléfono, el comprobante sale por Bluetooth y todo se sincroniza con el ERP cuando vuelve la conexión.</p>
+            </div>
+            <div class="offline-demo">
+              <button class="switch" id="net-switch" type="button" role="switch" aria-checked="false">
+                <span class="switch-track"><span class="switch-knob"></span></span>
+                <span id="net-label">Internet apagado</span>
+              </button>
+              <button class="btn-primary-solid" id="sale-btn" type="button">Registrar una venta</button>
+              <p class="offline-note">Pruébalo: registra ventas sin internet, enciéndelo y mira cómo se sincronizan.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-5 offset-lg-1" data-reveal="right">
+            <div class="slip" id="slip">
+              <p class="slip-title">Comprobante de venta · demostración</p>
+
+              <h3>Sin conexión</h3>
+              <ul class="slip-rows">
+                <li><span class="what">Guardar el pedido en el teléfono</span><span class="dots" aria-hidden="true"></span><span class="val">SQLite / Realm</span></li>
+                <li><span class="what">Descontar del inventario local</span><span class="dots" aria-hidden="true"></span><span class="val">al instante</span></li>
+                <li><span class="what">Imprimir el comprobante</span><span class="dots" aria-hidden="true"></span><span class="val">Bluetooth o USB</span></li>
+              </ul>
+
+              <h3>Al volver la conexión</h3>
+              <ul class="slip-rows">
+                <li><span class="what">Enviar los pedidos al ERP</span><span class="dots" aria-hidden="true"></span><span class="val">en segundo plano</span></li>
+                <li><span class="what">Traer inventario y precios</span><span class="dots" aria-hidden="true"></span><span class="val">en ambos sentidos</span></li>
+              </ul>
+
+              <h3>Ventas de esta sesión</h3>
+              <ul class="slip-rows slip-sales" id="sales" aria-live="polite"></ul>
+              <p class="slip-empty" id="sales-empty">Todavía no hay ventas. Registra una.</p>
+
+              <div class="slip-total"><span>Nada se pierde, haya o no internet</span><span id="sales-status">0 pendientes</span></div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -800,10 +850,10 @@
     </div>
   </dialog>
 
-  <script src="assets/js/site.js"></script>
-  <script src="assets/js/portfolio-data.js"></script>
-  <script src="assets/js/blog-data.js"></script>
-  <script src="assets/js/home.js"></script>
+  <script src="assets/js/site.js?v=20261016"></script>
+  <script src="assets/js/portfolio-data.js?v=20261016"></script>
+  <script src="assets/js/blog-data.js?v=20261016"></script>
+  <script src="assets/js/home.js?v=20261016"></script>
 
 </body>
 
