@@ -1,0 +1,74 @@
+/* Fuentes alojadas en el propio sitio (subconjunto latino): sin peticiones a terceros.
+   Domine, Quicksand y Roboto: licencia SIL OFL 1.1 (Fontsource). */
+
+@font-face {
+  font-family: "Domine";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/domine-latin-600-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Domine";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/domine-latin-700-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/quicksand-latin-500-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/quicksand-latin-600-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/quicksand-latin-700-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/roboto-latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/roboto-latin-500-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/roboto-latin-700-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/roboto-latin-400-italic.woff2") format("woff2");
+}

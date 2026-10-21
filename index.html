@@ -5,6 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0b0e14">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <script>document.documentElement.classList.add('js');</script>
 
   <title>Cristian Reyes · Desarrollador Full Stack y Mobile | React Native, Node.js</title>
@@ -46,14 +48,12 @@
   }
   </script>
 
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Domine:wght@600;700&family=Quicksand:wght@500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  <link href="assets/css/fonts.css?v=20261021" rel="stylesheet">
+  <link href="assets/vendor/devicon/devicon.min.css" rel="stylesheet">
 
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/css/main.css?v=20261016" rel="stylesheet">
+  <link href="assets/css/main.css?v=20261021" rel="stylesheet">
 </head>
 
 <body class="index-page">
@@ -663,35 +663,35 @@
           <div class="t-track" tabindex="0" role="region" aria-roledescription="carrusel" aria-label="Testimonios">
 
             <figure class="t-slide">
-              <img src="assets/img/testimonial-cesar.webp" class="t-photo" width="96" height="96" loading="lazy" decoding="async" alt="Cesar Guerrero">
+              <span class="t-photo t-mono" aria-hidden="true">CG</span>
               <h3>Cesar Guerrero</h3>
               <p class="t-role">Director de Fusoft</p>
               <blockquote>Cristian ha demostrado un excelente dominio en el desarrollo de software y una gran capacidad para resolver problemas complejos. Su trabajo en Fusoft ha sido fundamental para mejorar nuestros sistemas y procesos.</blockquote>
             </figure>
 
             <figure class="t-slide">
-              <img src="assets/img/testimonial-santiago.webp" class="t-photo" width="96" height="96" loading="lazy" decoding="async" alt="Santiago García">
+              <span class="t-photo t-mono" aria-hidden="true">SG</span>
               <h3>Santiago García</h3>
               <p class="t-role">Ingeniero de software</p>
               <blockquote>Su capacidad para liderar proyectos y su conocimiento técnico son excepcionales. Cristian siempre busca las mejores soluciones y se mantiene actualizado con las últimas tecnologías.</blockquote>
             </figure>
 
             <figure class="t-slide">
-              <img src="assets/img/testimonial-douglas.webp" class="t-photo" width="96" height="96" loading="lazy" decoding="async" alt="Douglas Mayorga">
+              <span class="t-photo t-mono" aria-hidden="true">DM</span>
               <h3>Douglas Mayorga</h3>
               <p class="t-role">CEO y fundador de Minority Chamber</p>
               <blockquote>Su trabajo en la Minority Chamber ha sido fundamental para nuestra transformación digital. Cristian ha implementado soluciones innovadoras que han mejorado significativamente nuestra eficiencia operativa.</blockquote>
             </figure>
 
             <figure class="t-slide">
-              <img src="assets/img/testimonial-nicolas.webp" class="t-photo" width="96" height="96" loading="lazy" decoding="async" alt="Nicolas Duran">
+              <span class="t-photo t-mono" aria-hidden="true">ND</span>
               <h3>Nicolas Duran</h3>
               <p class="t-role">Ingeniero multicloud</p>
               <blockquote>Su experiencia en arquitectura multicloud y su capacidad para diseñar soluciones escalables son impresionantes. Cristian ha sido un gran colaborador en proyectos de integración cloud.</blockquote>
             </figure>
 
             <figure class="t-slide">
-              <img src="assets/img/testimonial-luis.webp" class="t-photo" width="96" height="96" loading="lazy" decoding="async" alt="Luis Sanchez">
+              <span class="t-photo t-mono" aria-hidden="true">LS</span>
               <h3>Luis Sanchez</h3>
               <p class="t-role">Ingeniero de software</p>
               <blockquote>Su enfoque en la calidad del código y las mejores prácticas de desarrollo ha sido fundamental para el éxito de nuestros proyectos. Cristian es un profesional excepcional y un gran mentor.</blockquote>
@@ -773,7 +773,7 @@
               <div class="blog-content">
                 <span class="blog-category">Cloud y DevOps</span>
                 <h3><button type="button" class="blog-open" data-post="cloud">Transformando la educación con virtualización cloud</button></h3>
-                <p>Cómo se implementó infraestructura cloud en Uniempresarial para plataformas que atienden a más de 10.000 estudiantes.</p>
+                <p>Cómo se implementó infraestructura cloud en Uniempresarial para las plataformas educativas de la universidad.</p>
                 <div class="blog-meta"><i class="bi bi-tag" aria-hidden="true"></i> AWS, Docker, Kubernetes, educación</div>
               </div>
             </article>
@@ -872,6 +872,7 @@
         <a href="#about">Sobre mí</a>
         <a href="#portfolio">Proyectos</a>
         <a href="#contact">Contacto</a>
+        <a href="privacidad.html">Privacidad</a>
       </nav>
       <div class="social-links">
         <a href="https://www.linkedin.com/in/cristian-johan-reyes-gutierrez-751bb22b0/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
@@ -901,10 +902,10 @@
     </div>
   </dialog>
 
-  <script src="assets/js/site.js?v=20261016"></script>
-  <script src="assets/js/portfolio-data.js?v=20261016"></script>
-  <script src="assets/js/blog-data.js?v=20261016"></script>
-  <script src="assets/js/home.js?v=20261016"></script>
+  <script src="assets/js/site.js?v=20261021"></script>
+  <script src="assets/js/portfolio-data.js?v=20261021"></script>
+  <script src="assets/js/blog-data.js?v=20261021"></script>
+  <script src="assets/js/home.js?v=20261021"></script>
 
 </body>
 

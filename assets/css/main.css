@@ -3158,3 +3158,41 @@ section,
     transition: none;
   }
 }
+
+/* Testimonios: iniciales en lugar de fotos de terceros */
+.t-mono {
+  display: grid;
+  place-items: center;
+  background: var(--accent-color);
+  color: #ffffff;
+  font-family: var(--heading-font);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Página de privacidad */
+.legal-text h2 {
+  margin: 28px 0 8px;
+  font-size: 1.15rem;
+}
+
+.legal-text h2:first-child {
+  margin-top: 0;
+}
+
+.legal-text p,
+.legal-text li {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.legal-text ul {
+  padding-left: 1.2rem;
+}
+
+.legal-updated {
+  margin-top: 28px;
+  font-size: 14px;
+  color: var(--default-color);
+}

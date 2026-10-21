@@ -25,13 +25,13 @@ const blogPosts = {
         <li>ROI medible en proyectos de automatización inteligente</li>
         <li>Roadmap tecnológico para la adopción gradual de IA</li>
       </ul>
-      <p>La respuesta del público fue excepcional, con más de 150 asistentes y múltiples solicitudes de consultoría posterior.</p>
+      <p>El público mostró interés en conversar después de la charla.</p>
 
       <h2>Entrevista en CCB Radio</h2>
       <p>Fui invitado a CCB Radio para una entrevista en vivo donde discutimos:</p>
       <ul>
         <li><strong>Nuestra visión de innovación:</strong> Cómo FUSoft está transformando la educación superior con tecnología</li>
-        <li><strong>El impacto de la fábrica:</strong> Más de 15 proyectos desarrollados para instituciones como la CCB</li>
+        <li><strong>El impacto de la fábrica:</strong> Proyectos desarrollados para instituciones como la CCB</li>
         <li><strong>Jóvenes talentos:</strong> El rol de las nuevas generaciones en el desarrollo tecnológico regional</li>
         <li><strong>Alianzas estratégicas:</strong> La importancia de la colaboración universidad-empresa</li>
       </ul>
@@ -39,8 +39,8 @@ const blogPosts = {
       <h2>Resultados y Networking</h2>
       <p>Esta participación generó resultados tangibles:</p>
       <ul>
-        <li><strong>12 nuevos contactos empresariales</strong> interesados en nuestros servicios</li>
-        <li><strong>3 propuestas comerciales</strong> en desarrollo</li>
+        <li><strong>Nuevos contactos empresariales</strong> interesados en nuestros servicios</li>
+        <li><strong>Propuestas comerciales</strong> en desarrollo</li>
         <li><strong>Invitaciones a eventos</strong> como speaker en tecnología</li>
         <li><strong>Reconocimiento institucional</strong> de la CCB por nuestra participación</li>
       </ul>
@@ -166,19 +166,19 @@ const blogPosts = {
       <h2>Lecciones Aprendidas</h2>
       <p>Después de liderar múltiples proyectos, estas son mis principales aprendizajes:</p>
       <ul>
-        <li><strong>La comunicación es el 70% del éxito:</strong> Un equipo bien comunicado supera cualquier desafío técnico</li>
+        <li><strong>La comunicación es la base del éxito:</strong> Un equipo bien comunicado supera cualquier desafío técnico</li>
         <li><strong>La confianza se construye con transparencia:</strong> Compartir tanto éxitos como fracasos</li>
         <li><strong>La innovación necesita espacio:</strong> Permitir experimentación controlada</li>
         <li><strong>Los resultados hablan más que las palabras:</strong> Demostrar liderazgo con entregas exitosas</li>
       </ul>
 
-      <h2>Impacto Medible</h2>
+      <h2>Impacto</h2>
       <p>Los resultados de implementar estas prácticas de liderazgo han sido significativos:</p>
       <ul>
-        <li><strong>40% reducción en tiempo de desarrollo</strong> mediante mejor coordinación</li>
-        <li><strong>60% mejora en rendimiento</strong> de aplicaciones desarrolladas</li>
-        <li><strong>95% satisfacción del cliente</strong> en proyectos entregados</li>
-        <li><strong>0% rotación del equipo</strong> durante mis proyectos</li>
+        <li><strong>Mejor coordinación</strong> entre áreas, con menos retrabajo</li>
+        <li><strong>Mejoras de rendimiento</strong> en las aplicaciones desarrolladas</li>
+        <li><strong>Retroalimentación positiva</strong> de los clientes en los proyectos entregados</li>
+        <li><strong>Equipo estable</strong> durante mis proyectos</li>
       </ul>
 
       <h2>Reflexión Final</h2>
@@ -190,7 +190,7 @@ const blogPosts = {
     title: "Transformando la Educación con Virtualización Cloud",
     meta: "2025 • Cloud & DevOps • Infraestructura Educativa",
     content: `
-      <p><strong>Liderar la implementación de infraestructura cloud en Uniempresarial</strong> ha sido uno de los proyectos más desafiantes y gratificantes de mi carrera. Gestionar plataformas que atienden a más de 10,000 estudiantes requiere una combinación única de conocimiento técnico y visión estratégica.</p>
+      <p><strong>Liderar la implementación de infraestructura cloud en Uniempresarial</strong> ha sido uno de los proyectos más desafiantes y gratificantes de mi carrera. Gestionar plataformas que atienden a miles de estudiantes requiere una combinación única de conocimiento técnico y visión estratégica.</p>
       
       <h2>El Desafío Educativo</h2>
       <p>Cuando asumí el liderazgo del área de virtualización, Uniempresarial enfrentaba varios retos críticos:</p>
@@ -215,7 +215,7 @@ const blogPosts = {
       <p>El proceso de migración se ejecutó en fases estratégicas:</p>
       <ul>
         <li><strong>Fase 1 - Assessment:</strong> Auditoría completa de sistemas existentes</li>
-        <li><strong>Fase 2 - Proof of Concept:</strong> Migración piloto con 500 usuarios</li>
+        <li><strong>Fase 2 - Proof of Concept:</strong> Migración piloto con un grupo reducido de usuarios</li>
         <li><strong>Fase 3 - Migración gradual:</strong> Transferencia por módulos académicos</li>
         <li><strong>Fase 4 - Optimización:</strong> Fine-tuning de rendimiento y costos</li>
       </ul>
@@ -223,8 +223,8 @@ const blogPosts = {
       <h2>Impacto en la Experiencia Educativa</h2>
       <p>Los resultados de la virtualización han transformado completamente la experiencia académica:</p>
       <ul>
-        <li><strong>99.9% disponibilidad:</strong> Sistema funcional 24/7 sin interrupciones</li>
-        <li><strong>75% reducción en tiempo de carga:</strong> Acceso instantáneo a contenido académico</li>
+        <li><strong>Alta disponibilidad:</strong> Diseñada para operar 24/7</li>
+        <li><strong>Menor tiempo de carga:</strong> Acceso ágil a contenido académico</li>
         <li><strong>Acceso móvil optimizado:</strong> Estudiantes pueden estudiar desde cualquier dispositivo</li>
         <li><strong>Videoconferencias estables:</strong> Clases virtuales sin lag ni desconexiones</li>
       </ul>
@@ -232,8 +232,8 @@ const blogPosts = {
       <h2>Optimización de Costos</h2>
       <p>La implementación cloud no solo mejoró la experiencia, sino que optimizó significativamente los costos:</p>
       <ul>
-        <li><strong>45% reducción en costos operativos:</strong> Eliminación de hardware físico</li>
-        <li><strong>Reserved Instances estratégicas:</strong> Descuentos de hasta 60% en recursos fijos</li>
+        <li><strong>Menos costos operativos:</strong> Menor dependencia de hardware físico</li>
+        <li><strong>Reserved Instances estratégicas:</strong> Descuentos en recursos de uso fijo</li>
         <li><strong>Spot Instances para desarrollo:</strong> Entornos de prueba a bajo costo</li>
         <li><strong>Automatización de backups:</strong> Reducción de costos de almacenamiento</li>
       </ul>
@@ -259,8 +259,8 @@ const blogPosts = {
       <h2>Métricas de Éxito</h2>
       <p>Los resultados hablan por sí solos:</p>
       <ul>
-        <li><strong>10,000+ estudiantes</strong> activos simultáneamente sin degradación</li>
-        <li><strong>99.9% uptime</strong> durante todo el año académico</li>
+        <li><strong>Capacidad para miles de estudiantes</strong> activos al mismo tiempo</li>
+        <li><strong>Alta disponibilidad</strong> durante el año académico</li>
         <li><strong>2 segundos promedio</strong> de tiempo de respuesta</li>
         <li><strong>Zero incidentes de seguridad</strong> en datos académicos</li>
       </ul>
@@ -285,7 +285,7 @@ const blogPosts = {
 
       <h2>Reflexión Personal</h2>
       <p><strong>Transformar la educación superior con tecnología cloud es más que un proyecto técnico: es democratizar el acceso al conocimiento.</strong></p>
-      <p>Ver cómo 10,000 estudiantes pueden acceder a educación de calidad desde cualquier lugar, gracias a la infraestructura que lideramos, es la mayor satisfacción profesional que he experimentado.</p>
+      <p>Ver cómo miles de estudiantes pueden acceder a educación de calidad desde cualquier lugar, gracias a la infraestructura que lideramos, es la mayor satisfacción profesional que he experimentado.</p>
       <p>Este proyecto me enseñó que la verdadera innovación tecnológica ocurre cuando combinas visión estratégica, ejecución técnica impecable y un propósito social claro.</p>
     `
   }

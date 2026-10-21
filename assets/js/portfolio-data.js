@@ -338,10 +338,10 @@ const portfolioData = {
     category: "Infraestructura cloud",
     client: "Uniempresarial · Área de virtualización",
     technologies: ["AWS", "Docker", "Kubernetes", "React", "Node.js", "MongoDB", "Redis", "CI/CD"],
-    summary: "Infraestructura cloud en AWS para plataformas educativas con más de 10.000 estudiantes.",
-    description: "Liderazgo e implementación de la infraestructura de virtualización completa para Uniempresarial, gestionando plataformas educativas digitales que atienden a más de 10,000 estudiantes con alta disponibilidad y escalabilidad.",
+    summary: "Infraestructura cloud en AWS para las plataformas educativas de la universidad.",
+    description: "Liderazgo e implementación de la infraestructura de virtualización completa para Uniempresarial, gestionando plataformas educativas digitales de la universidad con alta disponibilidad y escalabilidad.",
     challenge: "Diseñar e implementar una arquitectura cloud escalable que soporte el crecimiento de la universidad, garantizando disponibilidad 24/7, seguridad de datos académicos y optimización de costos operativos.",
-    solution: "Implementación de arquitectura microservicios en AWS con contenedorización Docker, orquestación Kubernetes, CI/CD automatizado y monitoreo en tiempo real. Reducción de costos operativos en 45% y mejora de disponibilidad a 99.9%.",
+    solution: "Implementación de arquitectura microservicios en AWS con contenedorización Docker, orquestación Kubernetes, CI/CD automatizado y monitoreo en tiempo real. Menores costos operativos y mejor disponibilidad.",
     features: [
       "Arquitectura cloud escalable en AWS",
       "Contenedorización con Docker y Kubernetes",

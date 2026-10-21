@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portafoliocr7.netlify.app/sitemap.xml
