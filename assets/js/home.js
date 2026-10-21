@@ -368,7 +368,16 @@
     let count = 0;
     let syncTimers = [];
 
+    // La escena 3D de la portada refleja este mismo estado en la pantalla del teléfono
+    function emitState() {
+      const rows = Array.prototype.map.call(salesList.children, function (li) {
+        return li.dataset.state === "synced" ? "s" : "p";
+      });
+      window.dispatchEvent(new CustomEvent("demo-state", { detail: { online: online, rows: rows } }));
+    }
+
     function updateStatus() {
+      emitState();
       const pending = salesList.querySelectorAll('li[data-state="pending"]').length;
       const synced = salesList.querySelectorAll('li[data-state="synced"]').length;
       salesStatus.textContent = pending + (pending === 1 ? " pendiente" : " pendientes") +
@@ -403,6 +412,7 @@
       online = next;
       netSwitch.setAttribute("aria-checked", String(online));
       netLabel.textContent = online ? "Internet encendido" : "Internet apagado";
+      emitState();
 
       if (online) {
         // Los pendientes se sincronizan uno tras otro, como papel que sale de la impresora
