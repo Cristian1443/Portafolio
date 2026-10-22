@@ -250,6 +250,12 @@ import * as THREE from "../vendor/three/three.module.min.js";
     screen.position.z = 0.081;
     phone.add(screen);
   })();
+  const ring = new THREE.Mesh(
+    new THREE.TorusGeometry(1.28, 0.018, 12, 180, Math.PI * 1.35),
+    new THREE.MeshBasicMaterial({ color: 0x5b9dff, transparent: true, opacity: 0.9 })
+  );
+  ring.rotation.set(1.15, 0.25, 0);
+  phone.add(ring);
   world.add(phone);
 
   // Comprobante
@@ -262,7 +268,7 @@ import * as THREE from "../vendor/three/three.module.min.js";
   world.add(slip);
 
   // Piezas flotantes
-  const palette = [0x0a6cff, 0x5b9dff, 0xf4f5f7, 0x1d2432, 0x7fb3ff, 0x0a58ca];
+  const palette = [0x0a6cff, 0x5b9dff, 0xf4f5f7, 0x7fb3ff];
   const shapes = [
     function () { return new THREE.IcosahedronGeometry(0.24, 0); },
     function () { return new THREE.OctahedronGeometry(0.28, 0); },
@@ -272,7 +278,7 @@ import * as THREE from "../vendor/three/three.module.min.js";
     function () { return new THREE.TorusKnotGeometry(0.17, 0.06, 80, 10); },
     function () { return new THREE.DodecahedronGeometry(0.25, 0); }
   ];
-  const TOKEN_COUNT = 12;
+  const TOKEN_COUNT = 8;
   const tokens = [];
   for (let i = 0; i < TOKEN_COUNT; i += 1) {
     const mesh = new THREE.Mesh(
@@ -400,9 +406,9 @@ import * as THREE from "../vendor/three/three.module.min.js";
     const leave = smooth(clamp(sy / (heroBottom * 0.8), 0, 1));
 
     /* ---- Teléfono: sale de la portada, gira una vuelta y aterriza bajo la demostración ---- */
-    const phoneHeroX = H.cx - H.w * (isNarrow ? 0.3 : 0.46);
-    const phoneHeroY = H.cy + H.h * (isNarrow ? 0.24 : 0.2);
-    const phoneHeroH = isNarrow ? clamp(H.h * 0.46, 150, 230) : clamp(H.h * 0.6, 260, 520);
+    const phoneHeroX = H.cx - H.w * (isNarrow ? 0.3 : 0.5);
+    const phoneHeroY = H.cy + H.h * (isNarrow ? 0.24 : 0.22);
+    const phoneHeroH = isNarrow ? clamp(H.h * 0.46, 150, 230) : clamp(H.h * 0.5, 240, 460);
     let phoneX = phoneHeroX;
     let phoneY = phoneHeroY - sy;
     let phoneH = phoneHeroH;
@@ -436,11 +442,12 @@ import * as THREE from "../vendor/three/three.module.min.js";
       phoneShow
     );
     phone.rotation.set(phoneRX + Math.sin(t * 0.7) * 0.03, phoneRY, phoneRZ);
+    ring.rotation.z = t * 0.45;
 
     /* ---- Comprobante: sale de la portada y aterriza sobre el comprobante de la página ---- */
-    const slipHeroX = H.cx + H.w * (isNarrow ? 0.37 : 0.5);
-    const slipHeroY = H.cy - H.h * (isNarrow ? 0.16 : 0.12);
-    const slipHeroH = isNarrow ? clamp(H.h * 0.42, 130, 200) : clamp(H.h * 0.54, 230, 500);
+    const slipHeroX = vw + 260; // fuera de la pantalla, a la derecha
+    const slipHeroY = H.cy;
+    const slipHeroH = 380;
     let slipX = slipHeroX;
     let slipY = slipHeroY - sy;
     let slipPx = slipHeroH;
@@ -461,11 +468,10 @@ import * as THREE from "../vendor/three/three.module.min.js";
       slipRX = lerp(0.05, 0, q) + mouse.y * 0.12 * (1 - q);
       slipRZ = lerp(-0.1, 0, q);
       wave = 1 - q;
-      slipOpacity = 1 - smooth(clamp((q - 0.82) / 0.18, 0, 1));
+      slipOpacity = smooth(clamp(q / 0.14, 0, 1)) * (1 - smooth(clamp((q - 0.82) / 0.18, 0, 1)));
       slipShow = slipOpacity > 0.01 && slipY > -vh && slipY < vh * 2;
     } else {
-      slipShow = leave < 0.98;
-      slipPx *= 1 - leave;
+      slipShow = false;
     }
     slipMat.opacity = slipOpacity;
     setPose(
@@ -512,11 +518,11 @@ import * as THREE from "../vendor/three/three.module.min.js";
         dy = vy + par + Math.sin(i * 2.1) * 34;
       }
 
-      const useHero = heroScale >= dockScale;
+      const useHero = false;
       const px = useHero ? hx : dx;
       const py = useHero ? hy : dy;
       // en pantallas estrechas solo se muestra la mitad de las piezas y más pequeñas
-      const sc = tk.scale * Math.max(heroScale, dockScale) * (isNarrow ? 0.7 : 1);
+      const sc = tk.scale * dockScale * (isNarrow ? 0.7 : 1);
       setPose(
         tk.mesh,
         wxp(px) + Math.sin(t * 0.6 + tk.phase) * 0.06,

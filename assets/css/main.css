@@ -3235,3 +3235,26 @@ section,
   }
 }
 
+/*--------------------------------------------------------------
+# Portada: composición con un solo protagonista
+--------------------------------------------------------------*/
+.hero-container {
+  max-width: 1320px;
+  grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+}
+
+.hero-copy {
+  max-width: 600px;
+}
+
+.hero-photo {
+  justify-self: end;
+  width: min(100%, 540px, 64vh);
+}
+
+@media (max-width: 991.98px) {
+  .hero-photo {
+    justify-self: center;
+  }
+}
+
