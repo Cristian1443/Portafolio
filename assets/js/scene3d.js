@@ -250,12 +250,6 @@ import * as THREE from "../vendor/three/three.module.min.js";
     screen.position.z = 0.081;
     phone.add(screen);
   })();
-  const ring = new THREE.Mesh(
-    new THREE.TorusGeometry(1.28, 0.018, 12, 180, Math.PI * 1.35),
-    new THREE.MeshBasicMaterial({ color: 0x5b9dff, transparent: true, opacity: 0.9 })
-  );
-  ring.rotation.set(1.15, 0.25, 0);
-  phone.add(ring);
   world.add(phone);
 
   // Comprobante
@@ -267,40 +261,239 @@ import * as THREE from "../vendor/three/three.module.min.js";
   );
   world.add(slip);
 
-  // Piezas flotantes
-  const palette = [0x0a6cff, 0x5b9dff, 0xf4f5f7, 0x7fb3ff];
-  const shapes = [
-    function () { return new THREE.IcosahedronGeometry(0.24, 0); },
-    function () { return new THREE.OctahedronGeometry(0.28, 0); },
-    function () { return new THREE.TorusGeometry(0.22, 0.08, 16, 36); },
-    function () { return new THREE.BoxGeometry(0.34, 0.34, 0.34); },
-    function () { return new THREE.CylinderGeometry(0.24, 0.24, 0.08, 32); },
-    function () { return new THREE.TorusKnotGeometry(0.17, 0.06, 80, 10); },
-    function () { return new THREE.DodecahedronGeometry(0.25, 0); }
-  ];
-  const TOKEN_COUNT = 8;
-  const tokens = [];
-  for (let i = 0; i < TOKEN_COUNT; i += 1) {
-    const mesh = new THREE.Mesh(
-      shapes[i % shapes.length](),
-      new THREE.MeshStandardMaterial({ color: palette[i % palette.length], roughness: 0.28, metalness: 0.25, flatShading: i % 3 === 0 })
-    );
-    world.add(mesh);
-    tokens.push({
-      mesh: mesh,
-      angle: (i / TOKEN_COUNT) * Math.PI * 2 + 0.4,
-      ring: 0.9 + (i % 4) * 0.16,
-      depth: -1.2 + (i % 5) * 0.75,
-      spin: 0.25 + (i % 5) * 0.12,
-      phase: i * 1.7,
-      scale: 0.7 + (i % 4) * 0.22,
-      lane: i % 2 === 0 ? -1 : 1,
-      laneJitter: 0.012 + (i % 3) * 0.012,
-      lap: 0.55 + (i % 5) * 0.16,
-      offset: (i * 0.173) % 1,
-      lastScroll: 0
-    });
+  /* Objetos de ingeniería de software: cada sección se acompaña de lo que tiene que ver con ella.
+     Todos miden aproximadamente 1 unidad y se escalan igual al posarse. */
+  const BLUE = 0x0a6cff;
+  const SKY = 0x5b9dff;
+  const WHITE = 0xf4f5f7;
+  const NAVY = 0x1d2432;
+  const std = (color, o) => new THREE.MeshStandardMaterial(Object.assign({ color: color, roughness: 0.3, metalness: 0.25 }, o || {}));
+
+  function extrudePoly(points, depth, color) {
+    const shape = new THREE.Shape();
+    points.forEach(function (pt, i) { if (i) shape.lineTo(pt[0], pt[1]); else shape.moveTo(pt[0], pt[1]); });
+    shape.closePath();
+    const geo = new THREE.ExtrudeGeometry(shape, { depth: depth, bevelEnabled: true, bevelThickness: 0.025, bevelSize: 0.02, bevelSegments: 3 });
+    geo.translate(0, 0, -depth / 2);
+    return new THREE.Mesh(geo, std(color, { metalness: 0.35, roughness: 0.28 }));
   }
+
+  // </>  código
+  function buildBrackets() {
+    const g = new THREE.Group();
+    const left = extrudePoly([[0.2, 0.5], [-0.25, 0], [0.2, -0.5], [0.36, -0.36], [0.02, 0], [0.36, 0.36]], 0.16, BLUE);
+    left.position.x = -0.62;
+    const right = extrudePoly([[-0.2, 0.5], [0.25, 0], [-0.2, -0.5], [-0.36, -0.36], [-0.02, 0], [-0.36, 0.36]], 0.16, SKY);
+    right.position.x = 0.62;
+    const slash = extrudePoly([[0.09, 0.55], [0.25, 0.55], [-0.09, -0.55], [-0.25, -0.55]], 0.16, WHITE);
+    g.add(left, right, slash);
+    g.scale.setScalar(0.78);
+    return g;
+  }
+
+  // base de datos: discos apilados
+  function buildDatabase() {
+    const g = new THREE.Group();
+    for (let i = 0; i < 3; i += 1) {
+      const disc = new THREE.Mesh(new THREE.CylinderGeometry(0.38, 0.38, 0.2, 48), std(i === 1 ? SKY : BLUE, { metalness: 0.4 }));
+      disc.position.y = (i - 1) * 0.27;
+      const rim = new THREE.Mesh(new THREE.CylinderGeometry(0.385, 0.385, 0.018, 48), std(WHITE, { roughness: 0.4 }));
+      rim.position.y = (i - 1) * 0.27 + 0.1;
+      g.add(disc, rim);
+    }
+    return g;
+  }
+
+  // nube
+  function buildCloud() {
+    const g = new THREE.Group();
+    [[0, 0.05, 0.3], [-0.32, -0.06, 0.21], [0.33, -0.04, 0.23], [0.1, 0.22, 0.23]].forEach(function (c) {
+      const m = new THREE.Mesh(new THREE.SphereGeometry(c[2], 32, 24), std(0xa9cbff, { roughness: 0.5, metalness: 0.08 }));
+      m.position.set(c[0], c[1], 0);
+      g.add(m);
+    });
+    const base = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.2, 40), std(0xa9cbff, { roughness: 0.5, metalness: 0.08 }));
+    base.rotation.z = Math.PI / 2;
+    base.scale.set(0.5, 1, 0.45);
+    base.position.set(0, -0.15, 0);
+    g.add(base);
+    g.scale.setScalar(0.95);
+    return g;
+  }
+
+  // historial de git: commits y ramas
+  function buildGit() {
+    const g = new THREE.Group();
+    const nodes = [[0, -0.55], [0, 0], [0, 0.55], [0.5, 0.3]];
+    const edges = [[0, 1], [1, 2], [1, 3], [3, 2]];
+    const up = new THREE.Vector3(0, 1, 0);
+    edges.forEach(function (e) {
+      const A = new THREE.Vector3(nodes[e[0]][0], nodes[e[0]][1], 0);
+      const B = new THREE.Vector3(nodes[e[1]][0], nodes[e[1]][1], 0);
+      const dir = B.clone().sub(A);
+      const len = dir.length();
+      const bar = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, len, 12), std(SKY));
+      bar.position.copy(A).addScaledVector(dir, 0.5);
+      bar.quaternion.setFromUnitVectors(up, dir.normalize());
+      g.add(bar);
+    });
+    nodes.forEach(function (n, i) {
+      const m = new THREE.Mesh(new THREE.SphereGeometry(0.13, 24, 16), std(i === 3 ? WHITE : BLUE, { metalness: 0.35 }));
+      m.position.set(n[0], n[1], 0);
+      g.add(m);
+    });
+    g.position.x = -0.2;
+    const wrap = new THREE.Group();
+    wrap.add(g);
+    return wrap;
+  }
+
+  // procesador
+  function buildChip() {
+    const g = new THREE.Group();
+    const base = new THREE.Mesh(new THREE.BoxGeometry(0.72, 0.72, 0.1), std(0x3a4c6e, { metalness: 0.45 }));
+    const die = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.42, 0.12), std(BLUE, { metalness: 0.4 }));
+    die.position.z = 0.03;
+    g.add(base, die);
+    for (let i = 0; i < 4; i += 1) {
+      const o = -0.27 + i * 0.18;
+      [[o, 0.44, 0], [o, -0.44, 0]].forEach(function (pp) {
+        const pin = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.16, 0.04), std(WHITE));
+        pin.position.set(pp[0], pp[1], 0);
+        g.add(pin);
+      });
+      [[0.44, o], [-0.44, o]].forEach(function (pp) {
+        const pin = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.07, 0.04), std(WHITE));
+        pin.position.set(pp[0], pp[1], 0);
+        g.add(pin);
+      });
+    }
+    return g;
+  }
+
+  // engranaje
+  function buildGear() {
+    const teeth = 10;
+    const rO = 0.5;
+    const rI = 0.39;
+    const polar = (r, a) => [Math.cos(a) * r, Math.sin(a) * r];
+    const da = (Math.PI * 2) / teeth;
+    const pts = [];
+    for (let i = 0; i < teeth; i += 1) {
+      const a = i * da;
+      pts.push(polar(rI, a), polar(rO, a + 0.12 * da), polar(rO, a + 0.4 * da), polar(rI, a + 0.52 * da));
+    }
+    const shape = new THREE.Shape();
+    pts.forEach(function (pt, i) { if (i) shape.lineTo(pt[0], pt[1]); else shape.moveTo(pt[0], pt[1]); });
+    shape.closePath();
+    const hole = new THREE.Path();
+    hole.absarc(0, 0, 0.16, 0, Math.PI * 2, true);
+    shape.holes.push(hole);
+    const geo = new THREE.ExtrudeGeometry(shape, { depth: 0.14, bevelEnabled: true, bevelThickness: 0.02, bevelSize: 0.015, bevelSegments: 2 });
+    geo.translate(0, 0, -0.07);
+    const g = new THREE.Group();
+    g.add(new THREE.Mesh(geo, std(SKY, { metalness: 0.55, roughness: 0.28 })));
+    return g;
+  }
+
+  // terminal con comandos reales de trabajo
+  function buildTerminal() {
+    const c = makeCanvas(512, 340);
+    const ctx = c.getContext("2d");
+    roundRect(ctx, 0, 0, 512, 340, 26);
+    ctx.fillStyle = "#0b0e14";
+    ctx.fill();
+    ["#ef4444", "#f59e0b", "#22c55e"].forEach(function (col, i) {
+      ctx.beginPath();
+      ctx.arc(34 + i * 30, 34, 9, 0, Math.PI * 2);
+      ctx.fillStyle = col;
+      ctx.fill();
+    });
+    ctx.font = "600 27px Consolas, 'Courier New', monospace";
+    const lines = [["$ git push origin main", "#e6ecf8"], ["✓ desplegado", "#4ade80"], ["$ npm run build", "#e6ecf8"], ["✓ listo en 1.2 s", "#4ade80"], ["$ _", "#5b9dff"]];
+    lines.forEach(function (ln, i) {
+      ctx.fillStyle = ln[1];
+      ctx.fillText(ln[0], 34, 100 + i * 46);
+    });
+    const tex = new THREE.CanvasTexture(c);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    const g = new THREE.Group();
+    const body = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.74, 0.07), std(NAVY, { metalness: 0.5 }));
+    const screen = new THREE.Mesh(new THREE.PlaneGeometry(1.06, 0.7), new THREE.MeshBasicMaterial({ map: tex, transparent: true, toneMapped: false }));
+    screen.position.z = 0.04;
+    g.add(body, screen);
+    return g;
+  }
+
+  // contenedores (despliegue)
+  function buildContainers() {
+    const g = new THREE.Group();
+    [[SKY, 0, -0.28, 0], [BLUE, 0.08, 0, 0], [WHITE, -0.07, 0.28, 0]].forEach(function (c) {
+      const box = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.24, 0.4), std(c[0], { metalness: 0.3 }));
+      box.position.set(c[1], c[2], 0);
+      g.add(box);
+      for (let i = -3; i <= 3; i += 1) {
+        const rib = new THREE.Mesh(new THREE.BoxGeometry(0.02, 0.2, 0.42), std(NAVY, { roughness: 0.6, metalness: 0.1 }));
+        rib.position.set(c[1] + i * 0.12, c[2], 0);
+        g.add(rib);
+      }
+    });
+    return g;
+  }
+
+  // avión de papel (enviar)
+  function buildPlane() {
+    const v = new Float32Array([
+      0.65, 0.04, 0, -0.4, 0.34, 0.1, -0.22, 0, -0.14,
+      0.65, 0.04, 0, -0.22, 0, -0.14, -0.4, -0.34, 0.1,
+      -0.22, 0, -0.14, -0.4, 0.34, 0.1, -0.4, -0.34, 0.1
+    ]);
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute("position", new THREE.BufferAttribute(v, 3));
+    geo.computeVertexNormals();
+    const g = new THREE.Group();
+    g.add(new THREE.Mesh(geo, std(WHITE, { roughness: 0.5, metalness: 0.05, side: THREE.DoubleSide })));
+    const keel = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.025, 0.02), std(BLUE));
+    keel.position.set(0.12, 0.02, -0.07);
+    keel.rotation.z = -0.02;
+    g.add(keel);
+    return g;
+  }
+
+  const BUILDERS = {
+    brackets: buildBrackets, database: buildDatabase, cloud: buildCloud, git: buildGit, chip: buildChip,
+    gear: buildGear, terminal: buildTerminal, containers: buildContainers, plane: buildPlane
+  };
+
+  // qué objeto acompaña a cada sección (izquierda, derecha)
+  const DOCK = {
+    about: ["brackets", "terminal"],
+    stats: ["database", "chip"],
+    resume: ["git", "terminal"],
+    portfolio: ["containers", "cloud"],
+    skills: ["chip", "gear"],
+    services: ["gear", "cloud"],
+    testimonials: ["cloud", "brackets"],
+    blog: ["terminal", "plane"],
+    contact: ["plane", "cloud"]
+  };
+
+  const tokens = [];
+  Object.keys(DOCK).forEach(function (sectionId, si) {
+    DOCK[sectionId].forEach(function (kind, side) {
+      const obj = BUILDERS[kind]();
+      obj.visible = false;
+      world.add(obj);
+      tokens.push({
+        mesh: obj,
+        section: sectionId,
+        lane: side === 0 ? -1 : 1,
+        spin: 0.3 + ((si + side) % 4) * 0.12,
+        phase: si * 1.9 + side * 0.9,
+        lap: 0.6 + ((si * 3 + side) % 5) * 0.2,
+      });
+    });
+  });
 
   /* ------------------------------------------------------------ diseño: anclas en coordenadas de página */
   const heroEl = document.getElementById("hero");
@@ -360,7 +553,8 @@ import * as THREE from "../vendor/three/three.module.min.js";
       document.querySelectorAll(".section-title").forEach(function (el) {
         const r = pageRect(el);
         if (r.left > 190) {
-          A.slots.push({ cy: r.cy, left: r.left - 105, right: r.right + 105 });
+          const sec = el.closest("section");
+          A.slots.push({ id: sec ? sec.id : "", cy: r.cy, left: r.left - 105, right: r.right + 105 });
         }
       });
     }
@@ -405,33 +599,31 @@ import * as THREE from "../vendor/three/three.module.min.js";
     // 0 en la portada, 1 cuando la portada ya salió de la pantalla
     const leave = smooth(clamp(sy / (heroBottom * 0.8), 0, 1));
 
-    /* ---- Teléfono: sale de la portada, gira una vuelta y aterriza bajo la demostración ---- */
+    /* ---- Teléfono: vive en la portada y reaparece en "Vender sin internet"; nunca cruza el texto ---- */
     const phoneHeroX = H.cx - H.w * (isNarrow ? 0.3 : 0.5);
     const phoneHeroY = H.cy + H.h * (isNarrow ? 0.24 : 0.22);
     const phoneHeroH = isNarrow ? clamp(H.h * 0.46, 150, 230) : clamp(H.h * 0.5, 240, 460);
+    const heroFade = 1 - smooth(clamp(sy / (heroBottom * 0.5), 0, 1));
     let phoneX = phoneHeroX;
     let phoneY = phoneHeroY - sy;
-    let phoneH = phoneHeroH;
+    let phoneH = phoneHeroH * heroFade;
     let phoneRY = 0.45 + mouse.x * 0.35;
     let phoneRX = -0.12 + mouse.y * 0.18;
     let phoneRZ = 0.08;
     let phoneZ = 1.2;
-    let phoneShow = true;
 
     if (A.stage) {
-      const end = Math.max(A.stage.cy - vh * 0.5, 400);
-      const q = smooth(clamp(sy / end, 0, 1));
-      phoneX = lerp(phoneHeroX, A.stage.cx, q) + Math.sin(q * Math.PI) * vw * 0.05;
-      phoneY = lerp(phoneHeroY, A.stage.cy, q) - sy;
-      phoneH = lerp(phoneHeroH, A.stage.h, q);
-      phoneRY = lerp(0.45, -0.32, q) + q * Math.PI * 2 + mouse.x * 0.2 * q + mouse.x * 0.35 * (1 - q);
-      phoneRX = lerp(-0.12, 0.08, q) + mouse.y * 0.14;
-      phoneRZ = lerp(0.08, -0.05, q);
-      phoneZ = lerp(1.2, 0.3, q);
-      phoneShow = phoneY > -vh * 0.7 && phoneY < vh * 1.7;
-    } else {
-      phoneShow = leave < 0.98;
-      phoneH *= 1 - leave;
+      const stageVY = A.stage.cy - sy;
+      const near = smooth(clamp(1 - Math.abs(stageVY - vh * 0.5) / (vh * 0.62), 0, 1) * 1.6);
+      if (near * A.stage.h > phoneH) {
+        phoneX = A.stage.cx;
+        phoneY = stageVY;
+        phoneH = A.stage.h * near;
+        phoneRY = -0.32 + (1 - near) * Math.PI * 2 + mouse.x * 0.2;
+        phoneRX = 0.08 + mouse.y * 0.14;
+        phoneRZ = -0.05;
+        phoneZ = 0.3;
+      }
     }
     setPose(
       phone,
@@ -439,46 +631,39 @@ import * as THREE from "../vendor/three/three.module.min.js";
       wyp(phoneY) + Math.sin(t * 0.9) * 0.08,
       phoneZ,
       pxToWorld(phoneH) / PHONE_H,
-      phoneShow
+      true
     );
     phone.rotation.set(phoneRX + Math.sin(t * 0.7) * 0.03, phoneRY, phoneRZ);
-    ring.rotation.z = t * 0.45;
 
-    /* ---- Comprobante: sale de la portada y aterriza sobre el comprobante de la página ---- */
-    const slipHeroX = vw + 260; // fuera de la pantalla, a la derecha
-    const slipHeroY = H.cy;
-    const slipHeroH = 380;
-    let slipX = slipHeroX;
-    let slipY = slipHeroY - sy;
-    let slipPx = slipHeroH;
-    let slipRY = -0.4 + mouse.x * 0.3;
-    let slipRX = 0.05 + mouse.y * 0.12;
-    let slipRZ = -0.1;
-    let slipOpacity = 1;
-    let wave = 1;
-    let slipShow = true;
-
+    /* ---- Comprobante: entra volando y se posa sobre el comprobante de la página ---- */
+    let slipShow = false;
+    let slipOpacity = 0;
+    let wave = 0;
+    let slipX = 0;
+    let slipY = 0;
+    let slipPx = 1;
+    let slipRY = 0;
+    let slipRX = 0;
+    let slipRZ = 0;
     if (A.slip) {
-      const end = Math.max(A.slip.cy - vh * 0.5, 400);
-      const q = smooth(clamp(sy / end, 0, 1));
-      slipX = lerp(slipHeroX, A.slip.cx, q);
-      slipY = lerp(slipHeroY, A.slip.cy, q) - sy;
-      slipPx = lerp(slipHeroH, A.slip.h * 0.94, q);
-      slipRY = lerp(-0.4, 0, q) + mouse.x * 0.3 * (1 - q) + q * Math.PI * 2;
-      slipRX = lerp(0.05, 0, q) + mouse.y * 0.12 * (1 - q);
-      slipRZ = lerp(-0.1, 0, q);
+      const topVY = A.slip.cy - A.slip.h / 2 - sy;
+      const q = smooth(clamp((vh * 0.95 - topVY) / (vh * 0.6), 0, 1));
+      slipShow = q > 0.004 && q < 0.996;
+      slipX = lerp(A.slip.cx + vw * 0.22, A.slip.cx, q);
+      slipY = lerp(A.slip.cy - vh * 0.35, A.slip.cy, q) - sy;
+      slipPx = A.slip.h * 0.94 * lerp(0.7, 1, q);
+      slipRY = lerp(-0.7, 0, q) + (1 - q) * Math.PI;
+      slipRX = lerp(0.2, 0, q);
+      slipRZ = lerp(-0.2, 0, q);
       wave = 1 - q;
-      slipOpacity = smooth(clamp(q / 0.14, 0, 1)) * (1 - smooth(clamp((q - 0.82) / 0.18, 0, 1)));
-      slipShow = slipOpacity > 0.01 && slipY > -vh && slipY < vh * 2;
-    } else {
-      slipShow = false;
+      slipOpacity = smooth(clamp(q / 0.18, 0, 1)) * (1 - smooth(clamp((q - 0.84) / 0.16, 0, 1)));
     }
     slipMat.opacity = slipOpacity;
     setPose(
       slip,
       wxp(slipX),
       wyp(slipY) + Math.cos(t * 0.8) * 0.1 * wave,
-      lerp(0.6, 0, leave),
+      0.6 * wave,
       pxToWorld(slipPx) / SLIP_H,
       slipShow
     );
@@ -494,46 +679,36 @@ import * as THREE from "../vendor/three/three.module.min.js";
     pos.needsUpdate = true;
     slipGeo.computeVertexNormals();
 
-    /* ---- Piezas: giran alrededor de la foto y luego se posan junto a los títulos de sección ---- */
-    const slots = A.slots;
-    const heroScale = 1 - leave;
+    /* ---- Objetos de ingeniería: se posan junto al título de su sección ---- */
+    const slotById = {};
+    A.slots.forEach(function (sl) { slotById[sl.id] = sl; });
+    const size = clamp(vw * 0.085, 100, 170); // alto aproximado en píxeles
+
     tokens.forEach(function (tk, i) {
-      // pose en la portada
-      const a = tk.angle + t * 0.12 * (i % 2 ? -1 : 1);
-      const hx = H.cx + Math.cos(a) * H.w * (isNarrow ? 0.5 : 0.62) * tk.ring;
-      const hy = H.cy + Math.sin(a) * H.h * (isNarrow ? 0.44 : 0.56) * tk.ring - sy;
-
-      // pose junto a un título de sección
-      let dx = 0;
-      let dy = 0;
-      let dockScale = 0;
-      if (slots.length) {
-        const slot = slots[(i * 5 + Math.floor(i / 2)) % slots.length];
-        const vy = slot.cy - sy; // posición vertical del título en el viewport
-        const near = 1 - clamp(Math.abs(vy - vh * 0.5) / (vh * 0.8), 0, 1);
-        dockScale = smooth(near);
-        const side = tk.lane < 0 ? slot.left : slot.right;
-        const par = ((vy - vh * 0.5) / vh) * tk.lap * 90; // paralaje: cada pieza a su ritmo
-        dx = side + (tk.lane < 0 ? -1 : 1) * tk.laneJitter * 900;
-        dy = vy + par + Math.sin(i * 2.1) * 34;
+      const slot = slotById[tk.section];
+      if (!slot) {
+        tk.mesh.visible = false;
+        return;
       }
-
-      const useHero = false;
-      const px = useHero ? hx : dx;
-      const py = useHero ? hy : dy;
-      // en pantallas estrechas solo se muestra la mitad de las piezas y más pequeñas
-      const sc = tk.scale * dockScale * (isNarrow ? 0.7 : 1);
+      const vy = slot.cy - sy; // posición vertical del título en el viewport
+      const near = 1 - clamp(Math.abs(vy - vh * 0.5) / (vh * 0.8), 0, 1);
+      const dock = smooth(near);
+      const par = ((vy - vh * 0.5) / vh) * tk.lap * 90; // paralaje: cada objeto a su ritmo
+      const px = tk.lane < 0 ? slot.left : slot.right;
+      const py = vy + par;
       setPose(
         tk.mesh,
         wxp(px) + Math.sin(t * 0.6 + tk.phase) * 0.06,
         wyp(py) + Math.cos(t * 0.5 + tk.phase) * 0.08,
-        useHero ? tk.depth : tk.depth * 0.4,
-        sc,
-        !(isNarrow && i % 2)
+        0.2,
+        pxToWorld(size) * dock * (isNarrow ? 0.7 : 1),
+        true
       );
-      tk.mesh.rotation.x += 0.004 * tk.spin;
-      tk.mesh.rotation.y += 0.006 * tk.spin + (sy - tk.lastScroll) * 0.002;
-      tk.lastScroll = sy;
+      tk.mesh.rotation.set(
+        Math.sin(t * 0.4 + tk.phase) * 0.18 + mouse.y * 0.2,
+        tk.lane * -0.45 + Math.sin(t * 0.5 + tk.phase) * 0.3 + Math.sin(sy * 0.002 + tk.phase) * 0.35 + mouse.x * 0.3,
+        0
+      );
     });
 
     world.rotation.y = mouse.x * 0.05 * (1 - leave);
