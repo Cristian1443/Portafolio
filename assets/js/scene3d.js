@@ -603,7 +603,10 @@ import * as THREE from "../vendor/three/three.module.min.js";
     const phoneHeroX = H.cx - H.w * (isNarrow ? 0.3 : 0.5);
     const phoneHeroY = H.cy + H.h * (isNarrow ? 0.24 : 0.22);
     const phoneHeroH = isNarrow ? clamp(H.h * 0.46, 150, 230) : clamp(H.h * 0.5, 240, 460);
-    const heroFade = 1 - smooth(clamp(sy / (heroBottom * 0.5), 0, 1));
+    // en pantallas angostas la foto queda debajo del texto: el teléfono la acompaña hasta que sale
+    const heroFade = isNarrow
+      ? smooth(clamp((H.cy + H.h * 0.5 - sy) / (H.h * 0.35), 0, 1))
+      : 1 - smooth(clamp(sy / (heroBottom * 0.5), 0, 1));
     let phoneX = phoneHeroX;
     let phoneY = phoneHeroY - sy;
     let phoneH = phoneHeroH * heroFade;
